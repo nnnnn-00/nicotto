@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nicotto-fukuoka.pages.dev/sitemap.xml
