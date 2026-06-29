@@ -27,6 +27,7 @@
 - 共通部分は白・アイボリー・ベージュ
 - LINE相談ボタンは緑で目立たせる
 - 画像を多めに配置し、1セクション1画像または1カード1画像の見せ方にする
+- 表示画像は全54箇所を固有画像にし、同じ画像の使い回しをしない
 - スマホで見やすい構成
 
 ## ワイヤーフレーム
@@ -57,11 +58,9 @@ Cloudflare Pagesで公開しやすいよう、`outputs` フォルダ内だけで
 
 サイト用に以下の画像を追加。
 
-- `assets/nicotto-hero.webp`
-- `assets/sitter-reading.webp`
-- `assets/pickup-support.webp`
-- `assets/meal-prep-food.webp`
-- `assets/contact-consult.webp`
+- `assets/unique/nicotto-001.webp` 〜 `assets/unique/nicotto-060.webp`
+- 表示に使用している画像数: 54枚
+- 予備画像: 6枚
 
 ## SEO対応
 
@@ -128,4 +127,3 @@ http://127.0.0.1:8787/
 - 文字化けなし
 - 画像表示確認済み
 - 画像はWebP優先
-
