@@ -22,6 +22,7 @@
   <meta property="og:url" content="https://nicotto-fukuoka.com/">
   <meta property="og:image" content="https://nicotto-fukuoka.com/assets/nicotto-hero.png">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="public/images/hero-babysitter.jpeg" fetchpriority="high">
   <link rel="stylesheet" href="assets/styles.css?v=2">
   <script type="application/ld+json">
   {
@@ -128,8 +129,8 @@
         <p class="hero-lead">ベビーシッターと料理代行を通して、子育てや食事づくりの負担をやわらげ、毎日を心地よく過ごせるようサポートします。</p>
       </div>
       <figure class="hero-visual">
-        <img class="hero-slide hero-slide-sitter" src="public/images/hero-babysitter.jpeg" alt="福岡市周辺で利用できるベビーシッターのイメージ。公園の滑り台で女性と子ども2人が過ごす様子" width="1800" height="1586" fetchpriority="high">
-        <img class="hero-slide hero-slide-meal" src="public/images/hero-cooking.jpeg" alt="福岡市周辺の子育て家庭向け料理代行・作り置きのイメージ" width="1800" height="1350">
+        <img class="hero-slide hero-slide-sitter" src="public/images/hero-babysitter.jpeg" alt="福岡市周辺で利用できるベビーシッターのイメージ。公園の滑り台で女性と子ども2人が過ごす様子" width="1800" height="1586" fetchpriority="high" decoding="async">
+        <img class="hero-slide hero-slide-meal" src="public/images/hero-cooking.jpeg" alt="福岡市周辺の子育て家庭向け料理代行・作り置きのイメージ" width="1800" height="1350" decoding="async">
       </figure>
     </section>
 
@@ -141,7 +142,7 @@
         </div>
         <div class="service-duo">
           <article class="service-panel sitter">
-            <div class="card-img"><img src="assets/user-photos/sitter-car.jpg" alt="福岡市周辺のベビーシッター送迎サポートのイメージ。車内でチャイルドシートに座るお子さまたち" loading="lazy" width="1600" height="1200"></div>
+            <div class="card-img"><img src="assets/user-photos/sitter-car.jpg" alt="福岡市周辺のベビーシッター送迎サポートのイメージ。車内でチャイルドシートに座るお子さまたち" loading="lazy" width="1600" height="1200" decoding="async"></div>
             <span class="tag pink">ベビーシッター</span>
             <h3>お子さまの見守りから送迎まで</h3>
             <p>通常保育、送迎、病児保育に対応。<br>単発利用も定期利用も相談できます。</p>
@@ -152,7 +153,7 @@
             </ul>
           </article>
           <article class="service-panel meal">
-            <div class="card-img"><img src="assets/user-photos/cooking-kitchen.jpg" alt="福岡市周辺の料理代行サービスのイメージ。ご家庭のキッチンで調理する様子" loading="lazy" width="1600" height="1200"></div>
+            <div class="card-img"><img src="assets/user-photos/cooking-kitchen.jpg" alt="福岡市周辺の料理代行サービスのイメージ。ご家庭のキッチンで調理する様子" loading="lazy" width="1600" height="1200" decoding="async"></div>
             <span class="tag yellow">料理代行</span>
             <h3>子育て家庭に合うごはんを準備</h3>
             <p>作り置き、下味冷凍、離乳食、幼児食、アレルギー対応まで、<br>日々の食事づくりをやさしく支えます。</p>
@@ -198,27 +199,10 @@
       <div class="section-inner">
         <div class="section-head has-marker">
           <h2>対応エリア</h2>
-          <p class="lead">福岡市内を中心に、ベビーシッター・送迎サポート・料理代行をご相談いただけます。<br>エリア外でも内容により調整できる場合があります。</p>
+          <p class="lead">福岡市中央区・博多区・南区・早良区・東区・西区・城南区を中心に、春日市・大野城市など福岡市周辺もご相談いただけます。</p>
         </div>
-        <div class="grid-2">
-          <article class="area-box">
-            <h3>主な対応エリア</h3>
-            <p>福岡市中央区・博多区・南区・早良区・東区・西区・城南区を中心に対応しています。</p>
-            <ul class="list">
-              <li>福岡市中央区 / 博多区 / 南区</li>
-              <li>福岡市早良区 / 東区 / 西区 / 城南区</li>
-              <li>春日市・大野城市など福岡市周辺も相談可</li>
-            </ul>
-          </article>
-          <article class="area-box">
-            <h3>ご相談できる内容</h3>
-            <p>ご自宅での見守り、保育園・習い事の送迎、作り置きや離乳食づくりまで、ご家庭の状況に合わせてお見積りします。</p>
-            <ul class="list meal">
-              <li><a href="./babysitter.html">ベビーシッター・送迎サポートを見る</a></li>
-              <li><a href="./cooking.html">料理代行・作り置きを見る</a></li>
-              <li><a href="./pricing.html">料金の目安を見る</a></li>
-            </ul>
-          </article>
+        <div class="area-box">
+          <p>ベビーシッター・送迎・料理代行ともに、ご訪問先や時間帯により対応可否を確認してご案内します。</p>
         </div>
       </div>
     </section>
@@ -229,7 +213,7 @@
           <h2>困ったときに、そっと頼れる存在であるために</h2>
         </div>
         <div class="split-media">
-          <div class="media-frame"><img src="assets/user-photos/sitter-reading.jpg" alt="福岡市周辺で利用できるベビーシッターサポートのイメージ。絵本を読みながらお子さまに寄り添う様子" loading="lazy" width="1200" height="1600"></div>
+          <div class="media-frame"><img src="assets/user-photos/sitter-reading.jpg" alt="福岡市周辺で利用できるベビーシッターサポートのイメージ。絵本を読みながらお子さまに寄り添う様子" loading="lazy" width="1200" height="1600" decoding="async"></div>
           <ol class="number-list">
             <li><span>01</span><div><h3>安心感を第一に</h3><p>初めてのご利用で不安がある方にも<br>丁寧なコミュニケーションを心がけています。</p></div></li>
             <li><span>02</span><div><h3>その子のペースを尊重</h3><p>成長のスピードや性格、感じ方に合わせ<br>その子らしく過ごせる時間を大切にします。</p></div></li>
