@@ -43,6 +43,20 @@ pricingFlowStyle.textContent = `
 `;
 document.head.appendChild(pricingFlowStyle);
 
+const splitMediaRefinementStyle = document.createElement("style");
+splitMediaRefinementStyle.textContent = `
+body:has(.page-hero.visual-hero) .split-media .eyebrow {
+  display: none;
+}
+body:has(.page-hero.visual-hero) .split-media h2 {
+  margin-bottom: 26px;
+}
+body:has(.page-hero.visual-hero) .split-media h2 + .lead {
+  margin-top: 0;
+}
+`;
+document.head.appendChild(splitMediaRefinementStyle);
+
 const pricingMobileStyle = document.createElement("style");
 pricingMobileStyle.textContent = `
 @media (max-width: 860px) {
