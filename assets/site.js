@@ -23,6 +23,38 @@ document.querySelectorAll('script[type="application/ld+json"]').forEach((script)
 const toggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".nav");
 
+if (normalizedPath === "/") {
+  const topImageReplacements = [
+    {
+      selector: ".service-panel.sitter .card-img img",
+      src: "public/images/top-sitter-transport.svg",
+      alt: "車のチャイルドシートに座るお子さまの送迎サポートイメージ",
+    },
+    {
+      selector: ".service-panel.meal .card-img img",
+      src: "public/images/top-cooking.svg",
+      alt: "ご家庭のキッチンで料理を行う料理代行のイメージ",
+    },
+    {
+      selector: ".split-media .media-frame img",
+      src: "public/images/top-support.svg",
+      alt: "公園で遊ぶお子さまに寄り添うサポートのイメージ",
+    },
+  ];
+
+  topImageReplacements.forEach(({ selector, src, alt }) => {
+    const image = document.querySelector(selector);
+    if (!image) return;
+    image.src = src;
+    image.alt = alt;
+  });
+
+  const topCta = document.querySelector(".line-cta-banner.with-image");
+  if (topCta) {
+    topCta.style.setProperty("--cta-image", "url('public/images/top-cooking.svg')");
+  }
+}
+
 const footerHoverStyle = document.createElement("style");
 footerHoverStyle.textContent = `
 .footer-links a {
