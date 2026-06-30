@@ -102,7 +102,7 @@ Cloudflare Pagesで公開しやすいよう、`outputs` フォルダ内だけで
 
 ## 公開前に差し替える項目
 
-- `https://lin.ee/xxxxxxxx` を公式LINE URLへ変更
+- `https://line.me/R/ti/p/@788kxjco` を公式LINE URLへ変更
 - `info@example.com` を問い合わせ先メールアドレスへ変更
 - `https://nicotto-fukuoka.pages.dev` を本番ドメインへ変更
 
