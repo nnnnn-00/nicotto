@@ -146,12 +146,12 @@ p { margin: 0; }
 .icon-link img {
   width: 25px;
   height: 25px;
+  display: block;
   object-fit: contain;
 }
 .icon-link.line img {
   width: 30px;
   height: 30px;
-  transform: translateY(1px);
 }
 .menu-toggle { display: none; }
 .btn {

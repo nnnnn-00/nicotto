@@ -39,3 +39,12 @@ document.querySelectorAll("[data-pricing-tabs]").forEach((tabsRoot) => {
     });
   });
 });
+
+document.querySelectorAll('form[action*="formsubmit.co"]').forEach((form) => {
+  form.addEventListener("submit", (event) => {
+    if (window.location.protocol !== "file:") return;
+
+    event.preventDefault();
+    alert("フォーム送信は公開ページ、またはローカルサーバーで開いたページからご利用ください。お急ぎの場合はLINEからご連絡ください。");
+  });
+});
