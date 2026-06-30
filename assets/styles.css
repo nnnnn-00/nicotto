@@ -492,8 +492,6 @@ h3 {
   color: var(--brown);
   font-size: 1.22rem;
   line-height: 1.45;
-  font-family: "HuiFont29", "ふい字P", "HuiFontP", "HuiFont", "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
-  font-weight: 700;
 }
 .section-head.has-marker h2::after,
 .section-head.center.has-marker h2::after {
