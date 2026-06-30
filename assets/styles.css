@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "HuiFont29";
+  src: url("fonts/HuiFont29.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "HuiFont29";
+  src: url("fonts/HuiFont29.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg: #fffdfa;
   --ivory: #fff7ea;
@@ -238,7 +254,7 @@ select:focus-visible {
   font-size: clamp(2.4rem, 3vw, 3rem);
   line-height: 1.24;
   letter-spacing: 0;
-  font-family: "ふい字P", "HuiFontP", "HuiFont", "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  font-family: "HuiFont29", "ふい字P", "HuiFontP", "HuiFont", "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
   font-weight: 700;
 }
 .hero h1 span {
@@ -259,11 +275,11 @@ select:focus-visible {
   font-size: clamp(2rem, 4.2vw, 3.35rem);
   line-height: 1.22;
   letter-spacing: 0;
-  font-family: "ふい字P", "HuiFontP", "HuiFont", "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  font-family: "HuiFont29", "ふい字P", "HuiFontP", "HuiFont", "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
   font-weight: 700;
 }
 .handwritten-copy {
-  font-family: "ふい字P", "HuiFontP", "HuiFont", "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  font-family: "HuiFont29", "ふい字P", "HuiFontP", "HuiFont", "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
   font-weight: 700;
   line-height: 1.34;
 }
