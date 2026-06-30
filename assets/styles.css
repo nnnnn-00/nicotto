@@ -79,8 +79,9 @@ p { margin: 0; }
   gap: 10px;
   line-height: 1.1;
   color: var(--brown);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.36rem;
+  font-family: "HuiFont29", "ふい字P", "HuiFontP", "HuiFont", "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
 }
 .logo img {
   width: 52px;
@@ -97,6 +98,7 @@ p { margin: 0; }
   font-size: .72rem;
   color: var(--muted);
   font-weight: 700;
+  font-family: inherit;
 }
 .nav {
   display: flex;
