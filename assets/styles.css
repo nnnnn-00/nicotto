@@ -1394,6 +1394,15 @@ h3 {
 }
 .form textarea { min-height: 150px; resize: vertical; }
 
+.form-honey {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .site-footer {
   background: #604c3e;
   color: #fff7ea;

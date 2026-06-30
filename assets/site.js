@@ -8,26 +8,6 @@ if (toggle && nav) {
   });
 }
 
-const contactForm = document.querySelector("[data-contact-form]");
-if (contactForm) {
-  contactForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const data = new FormData(contactForm);
-    const subject = encodeURIComponent("nicottoへの相談");
-    const mailTo = contactForm.dataset.mailTo || "nikohonda0207@gmail.com";
-    const body = encodeURIComponent(
-      `お名前: ${data.get("name") || ""}\n` +
-      `メール: ${data.get("email") || ""}\n` +
-      `希望サービス: ${data.get("service") || ""}\n` +
-      `希望日時: ${data.get("date") || ""}\n` +
-      `お住まいのエリア: ${data.get("area") || ""}\n` +
-      `お子さまの年齢: ${data.get("child_age") || ""}\n\n` +
-      `${data.get("message") || ""}`
-    );
-    window.location.href = `mailto:${mailTo}?subject=${subject}&body=${body}`;
-  });
-}
-
 document.querySelectorAll("[data-pricing-tabs]").forEach((tabsRoot) => {
   const tabs = Array.from(tabsRoot.querySelectorAll("[data-pricing-tab]"));
   const panels = Array.from(tabsRoot.querySelectorAll("[data-pricing-panel]"));
