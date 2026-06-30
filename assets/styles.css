@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Yomogi&display=swap");
+
 :root {
   --bg: #fffdfa;
   --ivory: #fff7ea;
@@ -257,6 +259,11 @@ select:focus-visible {
   font-size: clamp(2rem, 4.2vw, 3.35rem);
   line-height: 1.22;
   letter-spacing: 0;
+}
+.handwritten-copy {
+  font-family: "Yomogi", "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  font-weight: 400;
+  line-height: 1.34;
 }
 .lead {
   color: var(--muted);
@@ -718,7 +725,8 @@ h3 {
   background: var(--pink);
 }
 .yellow .list li::before,
-.meal .list li::before { background: var(--yellow); }
+.meal .list li::before,
+.list.meal li::before { background: var(--yellow); }
 
 .page-hero {
   background:
