@@ -32,6 +32,14 @@ document.querySelectorAll(".instagram-gallery").forEach((gallery) => {
   }
 });
 
+const pricingFlowStyle = document.createElement("style");
+pricingFlowStyle.textContent = `
+#panel-sitter .pricing-flow {
+  background: var(--pink-soft);
+}
+`;
+document.head.appendChild(pricingFlowStyle);
+
 const pricingMobileStyle = document.createElement("style");
 pricingMobileStyle.textContent = `
 @media (max-width: 860px) {
