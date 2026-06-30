@@ -42,6 +42,16 @@ document.querySelectorAll('a[href*="line.me"], a[href*="lin.ee"]').forEach((link
   });
 });
 
+document.querySelectorAll('a[href$="pricing.html"], a[href*="pricing.html"]').forEach((link) => {
+  link.addEventListener("click", () => {
+    trackEvent("pricing_click", {
+      event_category: "navigation",
+      event_label: link.textContent.trim() || link.getAttribute("aria-label") || "ご利用料金",
+      link_url: link.href,
+    });
+  });
+});
+
 const footerHoverStyle = document.createElement("style");
 footerHoverStyle.textContent = `
 .footer-links a {
@@ -202,6 +212,11 @@ document.querySelectorAll("#contact-form").forEach((form) => {
       });
 
       if (!response.ok) throw new Error("Formspree submission failed");
+
+      trackEvent("contact_form_submit", {
+        event_category: "contact",
+        event_label: "お問い合わせフォーム送信",
+      });
 
       form.reset();
       if (status) {
