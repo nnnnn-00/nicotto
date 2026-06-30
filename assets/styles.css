@@ -148,7 +148,11 @@ p { margin: 0; }
   height: 25px;
   object-fit: contain;
 }
-.icon-link.line img { width: 30px; height: 30px; }
+.icon-link.line img {
+  width: 30px;
+  height: 30px;
+  transform: translateY(1px);
+}
 .menu-toggle { display: none; }
 .btn {
   display: inline-flex;
@@ -1060,6 +1064,14 @@ h3 {
   padding: 8px;
   border-radius: 999px;
   background: rgba(255, 247, 234, .9);
+  box-shadow: inset 0 0 0 1px rgba(75, 54, 40, .06);
+}
+.pricing-tab-help {
+  margin: -20px 0 0;
+  color: var(--muted);
+  font-size: .92rem;
+  font-weight: 700;
+  text-align: center;
 }
 .pricing-tab {
   min-height: 58px;
@@ -1077,11 +1089,11 @@ h3 {
 }
 .pricing-tab.sitter.is-active {
   background: var(--pink-soft);
-  box-shadow: 0 10px 24px rgba(216, 142, 157, .16);
+  box-shadow: 0 10px 24px rgba(216, 142, 157, .16), inset 0 0 0 2px rgba(246, 174, 187, .62);
 }
 .pricing-tab.meal.is-active {
   background: var(--yellow-soft);
-  box-shadow: 0 10px 24px rgba(201, 168, 60, .14);
+  box-shadow: 0 10px 24px rgba(201, 168, 60, .14), inset 0 0 0 2px rgba(246, 217, 120, .74);
 }
 .pricing-panel {
   display: grid;
@@ -1310,8 +1322,40 @@ h3 {
   gap: 20px;
   align-items: center;
 }
+a.cta {
+  color: inherit;
+  text-decoration: none;
+  transition: transform .18s ease, filter .18s ease, box-shadow .18s ease;
+}
+a.cta:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.025);
+  box-shadow: 0 16px 34px rgba(88, 58, 34, .08);
+}
 .cta.sitter-cta {
   background: linear-gradient(135deg, rgba(255, 232, 237, .92), rgba(255, 247, 234, .86) 58%, rgba(223, 244, 236, .55));
+}
+.line-cta-label,
+.pricing-cta-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  white-space: nowrap;
+  font-weight: 900;
+  line-height: 1.2;
+}
+.line-cta-label {
+  background: rgba(6, 199, 85, .92);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(6, 199, 85, .16);
+}
+.pricing-cta-label {
+  background: rgba(255, 255, 255, .72);
+  color: var(--brown);
+  box-shadow: inset 0 0 0 1px rgba(75, 54, 40, .06);
 }
 .cta .btn-line {
   min-height: 58px;
@@ -1579,6 +1623,10 @@ h3 {
   .pricing-tab-list {
     border-radius: 18px;
   }
+  .pricing-tab-help {
+    margin-top: -18px;
+    text-align: left;
+  }
   .pricing-tab {
     min-height: 52px;
   }
@@ -1698,6 +1746,11 @@ h3 {
   main section { padding: 56px 0; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .cta { grid-template-columns: 1fr; padding: 28px; }
+  .line-cta-label,
+  .pricing-cta-label {
+    width: 100%;
+    min-height: 54px;
+  }
   .cta .btn-line {
     width: 100%;
     min-height: 56px;

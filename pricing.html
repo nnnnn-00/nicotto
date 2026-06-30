@@ -52,12 +52,13 @@
             <button class="pricing-tab is-active sitter" type="button" role="tab" id="tab-sitter" aria-selected="true" aria-controls="panel-sitter" data-pricing-tab="sitter">ベビーシッター</button>
             <button class="pricing-tab meal" type="button" role="tab" id="tab-meal" aria-selected="false" aria-controls="panel-meal" data-pricing-tab="meal">料理代行</button>
           </div>
+          <p class="pricing-tab-help">見たいサービスをタップすると、下の料金表が切り替わります。</p>
 
           <section class="pricing-panel is-active" id="panel-sitter" role="tabpanel" aria-labelledby="tab-sitter" data-pricing-panel="sitter">
             <div class="pricing-panel-head sitter">
               <span class="tag pink">0〜12歳対応</span>
               <h2>福岡でお子さまを見守るベビーシッター</h2>
-              <p>習い事などの送迎、急な仕事や私用、夜間や発熱時のご相談まで。初めての方にも安心して頼っていただける関わりを大切にしています。</p>
+              <p>習い事などの送迎、急な仕事や私用、夜間や発熱時のご相談まで。<br>初めての方にも安心して頼っていただける関わりを大切にしています。</p>
             </div>
 
             <div class="price-summary-grid sitter">
@@ -80,7 +81,6 @@
 
             <div class="pricing-note-list">
               <span>病児保育OK</span>
-              <span>障がい児保育OK</span>
               <span>サービス手数料なし</span>
             </div>
 
@@ -139,7 +139,7 @@
               <table class="table pricing-table">
                 <thead><tr><th>時間</th><th>品数の目安</th><th>単発利用</th><th>定期利用 10%OFF</th></tr></thead>
                 <tbody>
-                  <tr><td data-label="時間">2時間〜</td><td data-label="品数の目安">5品保証〜</td><td data-label="単発利用">5,980円〜</td><td data-label="定期利用">5,382円〜</td></tr>
+                  <tr><td data-label="時間">2時間〜</td><td data-label="品数の目安">5品保証〜</td><td data-label="単発利用">5,980円〜</td><td data-label="定期利用"><span class="text-nowrap">5,382円〜</span></td></tr>
                   <tr><td data-label="時間">3時間〜</td><td data-label="品数の目安">8品前後</td><td data-label="単発利用">8,960円〜</td><td data-label="定期利用">8,064円〜</td></tr>
                   <tr><td data-label="時間">4時間〜</td><td data-label="品数の目安">10〜12品前後</td><td data-label="単発利用">11,940円〜</td><td data-label="定期利用">10,746円〜</td></tr>
                 </tbody>
@@ -188,7 +188,7 @@
 
     <section>
       <div class="section-inner">
-        <div class="section-head has-marker"><h2>料金に関するよくある質問</h2></div>
+        <div class="section-head has-marker"><h2>料金に関するよくあるご質問</h2></div>
         <div class="faq">
           <details><summary>ベビーシッターの単発利用はいくらですか？</summary><p>単発依頼は2,200円/時間です。定期依頼は1,800円/時間でご利用いただけます。</p></details>
           <details><summary>送迎だけの依頼はできますか？</summary><p>送迎のみは1,500円/回で相談できます。遠方の場合は別途交通費がかかる場合があります。</p></details>
@@ -201,13 +201,13 @@
 
     <section>
       <div class="section-inner">
-        <div class="cta with-image" style="--cta-image: url('../public/images/hero-cooking.jpeg')">
+        <a class="cta line-cta-banner with-image" href="https://line.me/R/ti/p/@788kxjco" target="_blank" rel="noopener noreferrer" aria-label="LINEで料金の目安を相談する" style="--cta-image: url('public/images/hero-cooking.jpeg')">
           <div>
             <h2>料金の目安をLINEで相談。</h2>
             <p>利用したい内容、日時、エリアを送っていただければ目安をご案内します。</p>
           </div>
-          <a class="btn btn-line" href="https://line.me/R/ti/p/@788kxjco">LINEで相談する</a>
-        </div>
+          <span class="line-cta-label">LINEで相談する →</span>
+        </a>
       </div>
     </section>
   </main>
@@ -216,11 +216,11 @@
       <a class="logo footer-logo" href="./index.html"><img src="assets/logo-nicotto.png" alt="nicottoロゴ"><span class="logo-text">nicotto<small>福岡のベビーシッター＋料理代行</small></span></a>
       <p class="footer-note">福岡市周辺を中心に、ベビーシッター・送迎・料理代行のご相談を承っています。</p>
       <div class="footer-links">
-        <a href="./babysitter.html">ベビーシッター</a>
+        <a href="./index.html">トップページ</a><a href="./babysitter.html">ベビーシッター</a>
         <a href="./cooking.html">料理代行</a>
         <a href="./pricing.html">ご利用料金</a>
         <a href="./contact.html">お問い合わせ</a>
-        <a href="https://www.instagram.com/nicotto_fukuoka/">Instagram</a>
+
       </div>
       <small>© nicotto</small>
     </div>
