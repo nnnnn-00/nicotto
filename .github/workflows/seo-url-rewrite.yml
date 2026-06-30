@@ -1,0 +1,37 @@
+name: SEO URL rewrite
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rewrite-seo-urls:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Replace old GitHub Pages URLs
+        run: |
+          set -e
+          find . -maxdepth 2 -type f \( -name '*.html' -o -name 'sitemap.xml' -o -name 'robots.txt' \) -print0 \
+            | xargs -0 perl -0pi -e 's#https://nnnnn-00\.github\.io/nicotto#https://nicotto-fukuoka.com#g'
+
+      - name: Commit changes if needed
+        run: |
+          set -e
+          if git diff --quiet; then
+            echo "No old URLs found."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Replace old SEO URLs with custom domain"
+          git push
