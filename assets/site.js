@@ -1,6 +1,19 @@
 const toggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".nav");
 
+const footerHoverStyle = document.createElement("style");
+footerHoverStyle.textContent = `
+.footer-links a {
+  transition: color .18s ease, text-decoration-color .18s ease;
+}
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  color: var(--mint-strong);
+  text-decoration-color: var(--mint-strong);
+}
+`;
+document.head.appendChild(footerHoverStyle);
+
 if (toggle && nav) {
   toggle.addEventListener("click", () => {
     const isOpen = nav.classList.toggle("open");
