@@ -482,6 +482,8 @@ h2 {
   font-size: clamp(1.65rem, 3.4vw, 2.55rem);
   line-height: 1.35;
   letter-spacing: 0;
+  font-family: "HuiFont29", "ふい字P", "HuiFontP", "HuiFont", "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  font-weight: 700;
 }
 h3 {
   margin: 0 0 8px;
@@ -1398,7 +1400,10 @@ h3 {
   position: relative;
   z-index: 1;
 }
-.cta h2 { font-size: clamp(1.55rem, 3vw, 2.2rem); }
+.cta h2 {
+  font-size: clamp(1.55rem, 3vw, 2.2rem);
+  font-weight: 700;
+}
 .form {
   display: grid;
   gap: 16px;
