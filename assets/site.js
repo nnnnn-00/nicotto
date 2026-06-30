@@ -23,6 +23,25 @@ document.querySelectorAll('script[type="application/ld+json"]').forEach((script)
 const toggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".nav");
 
+const trackEvent = (eventName, parameters = {}) => {
+  if (typeof window.gtag !== "function") return;
+  window.gtag("event", eventName, {
+    page_path: window.location.pathname,
+    page_title: document.title,
+    ...parameters,
+  });
+};
+
+document.querySelectorAll('a[href*="line.me"], a[href*="lin.ee"]').forEach((link) => {
+  link.addEventListener("click", () => {
+    trackEvent("line_click", {
+      event_category: "contact",
+      event_label: link.getAttribute("aria-label") || link.textContent.trim() || "LINE",
+      link_url: link.href,
+    });
+  });
+});
+
 const footerHoverStyle = document.createElement("style");
 footerHoverStyle.textContent = `
 .footer-links a {
