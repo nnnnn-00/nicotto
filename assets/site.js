@@ -14,6 +14,36 @@ footerHoverStyle.textContent = `
 `;
 document.head.appendChild(footerHoverStyle);
 
+const pricingMobileStyle = document.createElement("style");
+pricingMobileStyle.textContent = `
+@media (max-width: 860px) {
+  .table-wrap {
+    overflow-x: visible;
+    max-width: 100%;
+  }
+  .pricing-table {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+  }
+  .pricing-table tr {
+    width: 100%;
+  }
+  .pricing-table td {
+    min-width: 0;
+    grid-template-columns: minmax(74px, 30%) minmax(0, 1fr);
+  }
+  .pricing-table td:nth-child(2),
+  .pricing-table td:nth-child(3),
+  .pricing-table td:nth-child(4) {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+`;
+document.head.appendChild(pricingMobileStyle);
+
 document.querySelectorAll(".section-head h2").forEach((heading) => {
   if (heading.textContent.trim() === "こんなお悩みありませんか") {
     heading.innerHTML = 'こんな<span class="marker-yellow">お悩みありませんか</span>';
