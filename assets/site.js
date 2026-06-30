@@ -25,6 +25,13 @@ instagramGalleryStyle.textContent = `
 `;
 document.head.appendChild(instagramGalleryStyle);
 
+document.querySelectorAll(".instagram-gallery").forEach((gallery) => {
+  const posts = gallery.querySelectorAll("a");
+  if (posts.length >= 3) {
+    gallery.insertBefore(posts[2], posts[1]);
+  }
+});
+
 const pricingMobileStyle = document.createElement("style");
 pricingMobileStyle.textContent = `
 @media (max-width: 860px) {
