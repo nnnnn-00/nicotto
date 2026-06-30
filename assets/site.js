@@ -1,3 +1,25 @@
+const canonicalBaseUrl = "https://nicotto-fukuoka.com";
+const normalizedPath = window.location.pathname.endsWith("/index.html")
+  ? "/"
+  : window.location.pathname;
+const canonicalUrl = `${canonicalBaseUrl}${normalizedPath}`;
+const canonicalLink = document.querySelector('link[rel="canonical"]') || document.createElement("link");
+canonicalLink.rel = "canonical";
+canonicalLink.href = canonicalUrl;
+if (!canonicalLink.parentNode) document.head.appendChild(canonicalLink);
+
+document.querySelectorAll('meta[property="og:url"]').forEach((meta) => {
+  meta.setAttribute("content", canonicalUrl);
+});
+document.querySelectorAll('meta[property="og:image"]').forEach((meta) => {
+  const imagePath = meta.getAttribute("content")?.replace(/^https?:\/\/[^/]+(?:\/nicotto)?\//, "") || "assets/nicotto-hero.png";
+  meta.setAttribute("content", `${canonicalBaseUrl}/${imagePath}`);
+});
+
+document.querySelectorAll('script[type="application/ld+json"]').forEach((script) => {
+  script.textContent = script.textContent.replaceAll("https://nnnnn-00.github.io/nicotto", canonicalBaseUrl);
+});
+
 const toggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".nav");
 
