@@ -14,6 +14,14 @@ footerHoverStyle.textContent = `
 `;
 document.head.appendChild(footerHoverStyle);
 
+const instagramGalleryStyle = document.createElement("style");
+instagramGalleryStyle.textContent = `
+.instagram-gallery img {
+  object-position: center center;
+}
+`;
+document.head.appendChild(instagramGalleryStyle);
+
 const pricingMobileStyle = document.createElement("style");
 pricingMobileStyle.textContent = `
 @media (max-width: 860px) {
