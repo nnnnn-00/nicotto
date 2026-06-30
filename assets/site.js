@@ -35,6 +35,9 @@ document.querySelectorAll(".instagram-gallery").forEach((gallery) => {
 const pricingFlowStyle = document.createElement("style");
 pricingFlowStyle.textContent = `
 #panel-sitter .pricing-flow {
+  background: linear-gradient(135deg, rgba(255, 232, 237, .82), rgba(255, 255, 255, .7));
+}
+#panel-sitter .pricing-flow .mini-flow span {
   background: var(--pink-soft);
 }
 `;
