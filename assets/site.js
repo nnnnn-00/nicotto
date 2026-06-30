@@ -40,6 +40,9 @@ pricingMobileStyle.textContent = `
     white-space: normal;
     overflow-wrap: anywhere;
   }
+  #panel-sitter .pricing-table td[data-label="補足"] {
+    display: none;
+  }
 }
 `;
 document.head.appendChild(pricingMobileStyle);
