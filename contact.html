@@ -67,21 +67,16 @@
         <div class="contact-form-intro">
           <p>分かる範囲で入力いただければ、内容を確認して順番にご返信します。送信ボタンからそのままお問い合わせできます。</p>
         </div>
-        <!-- FormSubmitは初回のみ、送信先メールアドレスに届く確認リンクの承認が必要です。公開URL変更時は_nextを差し替えてください。 -->
-        <form class="form form-panel" action="https://formsubmit.co/nikohonda0207@gmail.com" method="POST">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_subject" value="nicotto公式HPからお問い合わせがありました">
-          <input type="hidden" name="_template" value="box">
-          <input type="hidden" name="_next" value="https://n0313yuukis-projects.pages.dev/thanks.html">
-          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="form-honey">
+        <form id="contact-form" class="form form-panel" action="https://formspree.io/f/mojondnp" method="POST">
           <label>お名前<input name="name" autocomplete="name" required></label>
           <label>メールアドレス<input type="email" name="email" autocomplete="email" required></label>
-          <label>希望サービス<select name="service"><option>ベビーシッター</option><option>料理代行</option><option>両方</option><option>まだ決まっていない</option></select></label>
-          <label>希望日時<input name="date" placeholder="例：7月10日 16:00〜18:00"></label>
+          <label>希望サービス<select name="service" required><option>ベビーシッター</option><option>料理代行</option><option>両方</option><option>まだ決まっていない</option></select></label>
+          <label>希望日時<input name="preferred_date" placeholder="例：7月10日 16:00〜18:00"></label>
           <label>お住まいのエリア<input name="area" placeholder="例：福岡市中央区"></label>
           <label>お子さまの年齢<input name="child_age" placeholder="例：2歳、5歳"></label>
-          <label>相談内容<textarea name="message" placeholder="送迎、病児保育、作り置き、離乳食・幼児食、アレルギー配慮など"></textarea></label>
+          <label>相談内容<textarea name="message" placeholder="送迎、病児保育、作り置き、離乳食・幼児食、アレルギー配慮など" required></textarea></label>
           <button class="btn btn-line" type="submit">フォームを送信する</button>
+          <p class="form-status" data-form-status aria-live="polite"></p>
         </form>
       </div>
     </section>

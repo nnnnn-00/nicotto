@@ -40,11 +40,46 @@ document.querySelectorAll("[data-pricing-tabs]").forEach((tabsRoot) => {
   });
 });
 
-document.querySelectorAll('form[action*="formsubmit.co"]').forEach((form) => {
-  form.addEventListener("submit", (event) => {
-    if (window.location.protocol !== "file:") return;
+document.querySelectorAll("#contact-form").forEach((form) => {
+  const status = form.querySelector("[data-form-status]");
+  const submitButton = form.querySelector('button[type="submit"]');
+  const defaultButtonText = submitButton ? submitButton.textContent : "";
 
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    alert("フォーム送信は公開ページ、またはローカルサーバーで開いたページからご利用ください。お急ぎの場合はLINEからご連絡ください。");
+
+    if (!submitButton) return;
+
+    if (status) {
+      status.textContent = "";
+      status.removeAttribute("data-state");
+    }
+
+    submitButton.disabled = true;
+    submitButton.textContent = "送信中...";
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+
+      if (!response.ok) throw new Error("Formspree submission failed");
+
+      form.reset();
+      if (status) {
+        status.textContent = "お問い合わせありがとうございます。内容を確認のうえ、折り返しご連絡いたします。";
+        status.dataset.state = "success";
+      }
+    } catch (error) {
+      if (status) {
+        status.textContent = "送信できませんでした。時間をおいて再度お試しいただくか、LINEからご相談ください。";
+        status.dataset.state = "error";
+      }
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = defaultButtonText;
+    }
   });
 });
