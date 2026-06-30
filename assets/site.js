@@ -1,36 +1,142 @@
+const canonicalBaseUrl = "https://nicotto-fukuoka.com";
+const normalizedPath = window.location.pathname.endsWith("/index.html")
+  ? "/"
+  : window.location.pathname;
+const canonicalUrl = `${canonicalBaseUrl}${normalizedPath}`;
+const canonicalLink = document.querySelector('link[rel="canonical"]') || document.createElement("link");
+canonicalLink.rel = "canonical";
+canonicalLink.href = canonicalUrl;
+if (!canonicalLink.parentNode) document.head.appendChild(canonicalLink);
+
+document.querySelectorAll('meta[property="og:url"]').forEach((meta) => {
+  meta.setAttribute("content", canonicalUrl);
+});
+document.querySelectorAll('meta[property="og:image"]').forEach((meta) => {
+  const imagePath = meta.getAttribute("content")?.replace(/^https?:\/\/[^/]+(?:\/nicotto)?\//, "") || "assets/nicotto-hero.png";
+  meta.setAttribute("content", `${canonicalBaseUrl}/${imagePath}`);
+});
+
+document.querySelectorAll('script[type="application/ld+json"]').forEach((script) => {
+  script.textContent = script.textContent.replaceAll("https://nnnnn-00.github.io/nicotto", canonicalBaseUrl);
+});
+
 const toggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".nav");
 
+const imageVersion = "20260630";
+const withVersion = (path) => `${path}?v=${imageVersion}`;
+
+const setImageWithFallback = (selector, candidates, alt) => {
+  const image = document.querySelector(selector);
+  if (!image || candidates.length === 0) return;
+
+  let index = 0;
+  image.alt = alt;
+  image.onerror = () => {
+    index += 1;
+    if (index >= candidates.length) {
+      image.onerror = null;
+      return;
+    }
+    image.src = withVersion(candidates[index]);
+  };
+  image.src = withVersion(candidates[index]);
+};
+
+const setBackgroundWithFallback = (element, candidates) => {
+  if (!element || candidates.length === 0) return;
+
+  const testImage = new Image();
+  let index = 0;
+
+  const apply = () => {
+    element.style.setProperty("--cta-image", `url('${withVersion(candidates[index])}')`);
+  };
+
+  testImage.onload = apply;
+  testImage.onerror = () => {
+    index += 1;
+    if (index < candidates.length) {
+      testImage.src = withVersion(candidates[index]);
+    }
+  };
+  testImage.src = withVersion(candidates[index]);
+};
+
 if (normalizedPath === "/") {
-  const topImageReplacements = [
-    {
-      selector: ".service-panel.sitter .card-img img",
-      src: "public/images/top-sitter-transport.svg",
-      alt: "車のチャイルドシートに座るお子さまの送迎サポートイメージ",
-    },
-    {
-      selector: ".service-panel.meal .card-img img",
-      src: "public/images/top-cooking.svg",
-      alt: "ご家庭のキッチンで料理を行う料理代行のイメージ",
-    },
-    {
-      selector: ".split-media .media-frame img",
-      src: "public/images/top-support.svg",
-      alt: "公園で遊ぶお子さまに寄り添うサポートのイメージ",
-    },
-  ];
+  const imageBasePaths = ["public/images", "assets/images", "assets/unique", "."];
+  const buildCandidates = (names) => imageBasePaths.flatMap((base) => names.map((name) => `${base}/${name}`));
 
-  topImageReplacements.forEach(({ selector, src, alt }) => {
-    const image = document.querySelector(selector);
-    if (!image) return;
-    image.src = src;
-    image.alt = alt;
-  });
+  setImageWithFallback(
+    ".service-panel.sitter .card-img img",
+    [
+      ...buildCandidates([
+        "ベビーシッター3.jpg",
+        "ベビーシッター３.jpg",
+        "ベビーシッター3.jpg",
+        "ベビーシッター３.jpg",
+        "ベビーシッター3.jpeg",
+        "ベビーシッター３.jpeg",
+        "ベビーシッター3.png",
+        "ベビーシッター３.png",
+      ]),
+      "public/images/top-sitter-transport.svg",
+      "assets/unique/nicotto-002.webp",
+    ],
+    "車のチャイルドシートに座るお子さまの送迎サポートイメージ"
+  );
 
-  const topCta = document.querySelector(".line-cta-banner.with-image");
-  if (topCta) {
-    topCta.style.setProperty("--cta-image", "url('public/images/top-cooking.svg')");
-  }
+  setImageWithFallback(
+    ".service-panel.meal .card-img img",
+    [
+      ...buildCandidates([
+        "料理代行2.jpg",
+        "料理代行２.jpg",
+        "料理代行2.jpeg",
+        "料理代行２.jpeg",
+        "料理代行2.png",
+        "料理代行２.png",
+      ]),
+      "public/images/top-cooking.svg",
+      "assets/unique/nicotto-003.webp",
+    ],
+    "ご家庭のキッチンで料理を行う料理代行のイメージ"
+  );
+
+  setImageWithFallback(
+    ".split-media .media-frame img",
+    [
+      ...buildCandidates([
+        "ベビーシッター4.jpg",
+        "ベビーシッター４.jpg",
+        "ベビーシッター4.jpg",
+        "ベビーシッター４.jpg",
+        "ベビーシッター4.jpeg",
+        "ベビーシッター４.jpeg",
+        "ベビーシッター4.png",
+        "ベビーシッター４.png",
+      ]),
+      "public/images/top-support.svg",
+      "assets/unique/nicotto-011.webp",
+    ],
+    "公園で遊ぶお子さまに寄り添うサポートのイメージ"
+  );
+
+  setBackgroundWithFallback(
+    document.querySelector(".line-cta-banner.with-image"),
+    [
+      ...buildCandidates([
+        "料理代行1.jpg",
+        "料理代行１.jpg",
+        "料理代行1.jpeg",
+        "料理代行１.jpeg",
+        "料理代行1.png",
+        "料理代行１.png",
+      ]),
+      "public/images/top-cooking.svg",
+      "assets/unique/nicotto-012.webp",
+    ]
+  );
 }
 
 const footerHoverStyle = document.createElement("style");
