@@ -67,10 +67,12 @@
         <div class="contact-form-intro">
           <p>分かる範囲で入力いただければ、内容を確認して順番にご返信します。送信ボタンからそのままお問い合わせできます。</p>
         </div>
-        <form class="form form-panel" action="https://formsubmit.co/nikohonda0207@gmail.com" method="post">
-          <input type="hidden" name="_subject" value="nicotto公式サイトからのお問い合わせ">
-          <input type="hidden" name="_template" value="table">
+        <!-- FormSubmitは初回のみ、送信先メールアドレスに届く確認リンクの承認が必要です。公開URL変更時は_nextを差し替えてください。 -->
+        <form class="form form-panel" action="https://formsubmit.co/nikohonda0207@gmail.com" method="POST">
           <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_subject" value="nicotto公式HPからお問い合わせがありました">
+          <input type="hidden" name="_template" value="box">
+          <input type="hidden" name="_next" value="https://nnnnn-00.github.io/nicotto/thanks.html">
           <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="form-honey">
           <label>お名前<input name="name" autocomplete="name" required></label>
           <label>メールアドレス<input type="email" name="email" autocomplete="email" required></label>
@@ -89,10 +91,10 @@
         <div class="section-head center">
           <h2>Instagramでも雰囲気をご覧いただけます</h2>
         </div>
-        <div class="instagram-feed" aria-label="Instagram投稿へのリンク">
-          <a class="instagram-post" href="https://www.instagram.com/nicotto_fukuoka/"><img src="../assets/unique/nicotto-050.webp" alt="保育の雰囲気が伝わるInstagram投稿イメージ" loading="lazy" width="1024" height="768"><h3>保育の雰囲気</h3><p>お子さまのペースを大切にした関わり。</p></a>
-          <a class="instagram-post" href="https://www.instagram.com/nicotto_fukuoka/"><img src="../assets/unique/nicotto-051.webp" alt="料理代行の雰囲気が伝わるInstagram投稿イメージ" loading="lazy" width="1024" height="768"><h3>料理サポート</h3><p>作り置きや子どもごはんのイメージ。</p></a>
-          <a class="instagram-post" href="https://www.instagram.com/nicotto_fukuoka/"><img src="../assets/unique/nicotto-052.webp" alt="相談前に見られるInstagram投稿イメージ" loading="lazy" width="1024" height="768"><h3>ご相談の前に</h3><p>サービスの雰囲気を見てから相談できます。</p></a>
+        <div class="instagram-feed" aria-label="Instagram投稿">
+          <div class="instagram-embed"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DQO4ga6EhjI/" data-instgrm-version="14"></blockquote></div>
+          <div class="instagram-embed"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DQqEuZjElTM/" data-instgrm-version="14"></blockquote></div>
+          <div class="instagram-embed"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DYWwkZJldDd/" data-instgrm-version="14"></blockquote></div>
         </div>
         <div class="hero-actions instagram-actions"><a class="btn btn-ghost" href="https://www.instagram.com/nicotto_fukuoka/">Instagramを見る</a></div>
       </div>
@@ -139,5 +141,6 @@
     </div>
   </footer>
   <script src="../assets/site.js" defer></script>
+  <script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>

@@ -127,8 +127,9 @@ p { margin: 0; }
   margin-left: 4px;
 }
 .icon-link {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 48px;
   height: 48px;
   padding: 0;
@@ -148,10 +149,12 @@ p { margin: 0; }
   height: 25px;
   display: block;
   object-fit: contain;
+  object-position: center;
 }
 .icon-link.line img {
   width: 30px;
   height: 30px;
+  transform: translateX(1px);
 }
 .menu-toggle { display: none; }
 .btn {
@@ -1456,6 +1459,17 @@ a.cta::before {
 .instagram-actions {
   justify-content: center;
   margin-top: 24px;
+}
+.instagram-embed {
+  display: grid;
+  place-items: start center;
+  min-width: 0;
+}
+.instagram-feed .instagram-media {
+  width: min(100%, 340px) !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  margin: 0 !important;
 }
 .cta.with-image {
   position: relative;
