@@ -1075,14 +1075,15 @@ h3 {
   z-index: 2;
 }
 .pricing-tab {
-  min-height: 62px;
+  min-height: 82px;
   border: 0;
-  border-radius: 22px 22px 0 0;
+  border-radius: 26px 26px 0 0;
   color: var(--brown);
   font: inherit;
+  font-size: 1.12rem;
   font-weight: 900;
   cursor: pointer;
-  opacity: .68;
+  opacity: .74;
   box-shadow: inset 0 -1px 0 rgba(75, 54, 40, .06);
   transition: background .18s ease, box-shadow .18s ease, transform .18s ease, opacity .18s ease;
 }
@@ -1103,14 +1104,14 @@ h3 {
   opacity: 1;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  box-shadow: 0 -8px 18px rgba(216, 142, 157, .1), inset 0 1px 0 rgba(255, 255, 255, .74);
+  box-shadow: 0 -10px 22px rgba(216, 142, 157, .12), inset 0 1px 0 rgba(255, 255, 255, .78);
 }
 .pricing-tab.meal.is-active {
   background: var(--yellow-soft);
   opacity: 1;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  box-shadow: 0 -8px 18px rgba(201, 168, 60, .1), inset 0 1px 0 rgba(255, 255, 255, .74);
+  box-shadow: 0 -10px 22px rgba(201, 168, 60, .12), inset 0 1px 0 rgba(255, 255, 255, .78);
 }
 .pricing-panel {
   display: grid;
@@ -1651,8 +1652,8 @@ a.cta::before {
     gap: 0;
   }
   .pricing-tab {
-    min-height: 56px;
-    font-size: .94rem;
+    min-height: 66px;
+    font-size: 1rem;
   }
   .pricing-panel {
     padding: 24px 18px;
