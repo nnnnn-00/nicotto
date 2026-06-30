@@ -19,6 +19,9 @@ instagramGalleryStyle.textContent = `
 .instagram-gallery img {
   object-position: center center;
 }
+.instagram-gallery a:nth-child(1) img {
+  object-position: center 28%;
+}
 `;
 document.head.appendChild(instagramGalleryStyle);
 
