@@ -1423,52 +1423,32 @@ a.cta::before {
   box-shadow: none;
   background: rgba(255,255,255,.66);
 }
-.instagram-feed {
+.instagram-gallery {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 28px;
+  gap: 12px;
   margin-top: 28px;
 }
-.instagram-post {
+.instagram-gallery a {
   display: block;
-  color: inherit;
-  text-decoration: none;
-  padding: 0 0 10px;
   border-radius: 18px;
-  transition: transform .18s ease, background .18s ease;
+  overflow: hidden;
+  background: rgba(255, 255, 255, .45);
 }
-.instagram-post:hover {
-  transform: translateY(-3px);
-  background: rgba(255, 255, 255, .42);
-}
-.instagram-post img {
+.instagram-gallery img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 16px;
+  transition: transform .3s ease, opacity .3s ease;
 }
-.instagram-post h3 {
-  margin: 14px 4px 6px;
-}
-.instagram-post p {
-  margin: 0 4px;
-  color: var(--muted);
+.instagram-gallery a:hover img {
+  transform: scale(1.03);
+  opacity: .9;
 }
 .instagram-actions {
   justify-content: center;
   margin-top: 24px;
-}
-.instagram-embed {
-  display: grid;
-  place-items: start center;
-  min-width: 0;
-}
-.instagram-feed .instagram-media {
-  width: min(100%, 340px) !important;
-  min-width: 0 !important;
-  max-width: 100% !important;
-  margin: 0 !important;
 }
 .cta.with-image {
   position: relative;
@@ -1782,7 +1762,10 @@ a.cta::before {
   }
   .feature-strip { grid-template-columns: 1fr; }
   .card-img { margin: -6px -6px 16px; }
-  .instagram-feed { grid-template-columns: 1fr; }
+  .instagram-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
   .cta.with-image::after { width: 100%; opacity: .12; }
   main section { padding: 56px 0; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
