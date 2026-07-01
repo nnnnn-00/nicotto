@@ -30,6 +30,29 @@ if (seoTitleMap[normalizedPath]) {
   });
 }
 
+const heroImages = document.querySelectorAll(".hero img, .page-hero img");
+heroImages.forEach((image) => {
+  image.decoding = "async";
+  image.setAttribute("fetchpriority", "high");
+  image.removeAttribute("loading");
+});
+
+document.querySelectorAll("img").forEach((image) => {
+  if ([...heroImages].includes(image)) return;
+  if (!image.hasAttribute("loading")) image.loading = "lazy";
+  image.decoding = "async";
+  image.setAttribute("fetchpriority", "low");
+});
+
+const performanceStyle = document.createElement("style");
+performanceStyle.textContent = `
+main > section:not(.hero):not(.page-hero) {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 720px;
+}
+`;
+document.head.appendChild(performanceStyle);
+
 const toggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".nav");
 
