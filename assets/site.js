@@ -60,6 +60,43 @@ document.querySelectorAll(".footer-links").forEach((footerLinks) => {
   }
 });
 
+const swapImage = (image, src, alt) => {
+  if (!image) return;
+  image.src = src;
+  image.alt = alt;
+  image.loading = image.loading || "lazy";
+  image.decoding = "async";
+};
+
+if (window.location.pathname.endsWith("/babysitter.html")) {
+  document.querySelectorAll(".recommend-item").forEach((item) => {
+    const tag = item.querySelector(".tag")?.textContent.trim();
+    if (tag === "定期利用") {
+      swapImage(
+        item.querySelector(".recommend-photo img"),
+        "assets/user-photos/sitter-nap.jpg",
+        "福岡市周辺で定期利用のベビーシッターを利用し、室内でお子さまに寄り添う様子"
+      );
+    }
+  });
+}
+
+if (window.location.pathname.endsWith("/pricing.html")) {
+  swapImage(
+    document.querySelector(".pricing-hero .page-visual img"),
+    "assets/user-photos/cooking-spread.jpg",
+    "福岡市周辺のベビーシッター・料理代行の料金相談イメージ"
+  );
+}
+
+if (window.location.pathname.endsWith("/contact.html")) {
+  swapImage(
+    document.querySelector(".page-hero.visual-hero .page-visual img"),
+    "assets/user-photos/sitter-care.jpg",
+    "福岡市周辺のベビーシッター・料理代行について相談するイメージ"
+  );
+}
+
 const areaInner = document.querySelector("#area .section-inner");
 if (areaInner) {
   const existingMap = areaInner.querySelector(".area-map-visual");
@@ -203,6 +240,16 @@ areaMapStyle.textContent = `
 }
 `;
 document.head.appendChild(areaMapStyle);
+
+const photoSwapStyle = document.createElement("style");
+photoSwapStyle.textContent = `
+.pricing-hero .page-visual img,
+body:has(.page-hero.visual-hero) .page-hero.visual-hero .page-visual img[src*="assets/user-photos/"] {
+  object-fit: cover;
+  padding: 0;
+}
+`;
+document.head.appendChild(photoSwapStyle);
 
 document.querySelectorAll('a[href*="line.me"], a[href*="lin.ee"]').forEach((link) => {
   link.addEventListener("click", () => {
