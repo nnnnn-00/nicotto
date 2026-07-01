@@ -60,6 +60,20 @@ document.querySelectorAll(".footer-links").forEach((footerLinks) => {
   }
 });
 
+const areaInner = document.querySelector("#area .section-inner");
+if (areaInner) {
+  const existingMap = areaInner.querySelector(".area-map-visual");
+  const areaBox = areaInner.querySelector(".area-box");
+  const mapFigure = existingMap || document.createElement("figure");
+  mapFigure.className = "area-map-visual";
+  mapFigure.innerHTML = '<img src="assets/fukuoka-area-map.svg" alt="福岡県全域の対応エリアマップ" loading="lazy" width="920" height="690">';
+  if (areaBox) {
+    areaBox.replaceWith(mapFigure);
+  } else if (!existingMap) {
+    areaInner.appendChild(mapFigure);
+  }
+}
+
 const navInteractionStyle = document.createElement("style");
 navInteractionStyle.textContent = `
 html {
@@ -150,6 +164,46 @@ body {
 `;
 document.head.appendChild(navInteractionStyle);
 
+const areaMapStyle = document.createElement("style");
+areaMapStyle.textContent = `
+#area .section-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 46%);
+  gap: clamp(28px, 5vw, 76px);
+  align-items: center;
+}
+#area .section-head {
+  margin: 0;
+}
+#area .section-head .lead {
+  max-width: 620px;
+}
+.area-map-visual {
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.area-map-visual img {
+  display: block;
+  width: min(100%, 520px);
+  height: auto;
+  filter: drop-shadow(0 18px 30px rgba(88, 58, 34, .06));
+}
+@media (max-width: 860px) {
+  #area .section-inner {
+    grid-template-columns: 1fr;
+  }
+  .area-map-visual {
+    justify-content: center;
+  }
+  .area-map-visual img {
+    width: min(100%, 390px);
+  }
+}
+`;
+document.head.appendChild(areaMapStyle);
+
 document.querySelectorAll('a[href*="line.me"], a[href*="lin.ee"]').forEach((link) => {
   link.addEventListener("click", () => {
     trackEvent("line_click", {
@@ -218,6 +272,12 @@ pricingFlowStyle.textContent = `
 }
 #panel-sitter .pricing-flow .mini-flow span {
   background: var(--pink-soft);
+}
+#panel-meal .pricing-flow {
+  background: linear-gradient(135deg, rgba(255, 243, 201, .9), rgba(255, 253, 250, .74) 62%, rgba(255, 247, 234, .88));
+}
+#panel-meal .pricing-flow .mini-flow span {
+  background: var(--yellow-soft);
 }
 `;
 document.head.appendChild(pricingFlowStyle);
