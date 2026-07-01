@@ -25,16 +25,39 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="stylesheet" href="assets/styles.css?v=2">
   <style>
+    .dayori-news { background: linear-gradient(180deg, rgba(255,255,255,.58), rgba(255,247,234,.5)); }
+    .dayori-news-head { text-align: center; display: grid; gap: 8px; margin-bottom: 34px; }
+    .dayori-news-head .news-en { color: var(--mint-strong); font-weight: 900; letter-spacing: .14em; font-size: .92rem; }
+    .dayori-news-head h2 { font-size: clamp(1.9rem, 4vw, 2.85rem); }
+    .news-list { max-width: 960px; margin: 0 auto; border-top: 1px solid rgba(75,54,40,.12); }
+    .news-item { display: grid; grid-template-columns: 120px 116px 1fr; gap: 18px; align-items: center; padding: 22px 0; border-bottom: 1px solid rgba(75,54,40,.12); }
+    .news-date { color: var(--brown); font-weight: 900; letter-spacing: .04em; }
+    .news-label { display: inline-flex; align-items: center; justify-content: center; min-height: 30px; padding: 4px 14px; border-radius: 999px; border: 1px solid rgba(107,191,162,.55); background: rgba(255,255,255,.78); color: #2f6f5d; font-weight: 900; font-size: .82rem; white-space: nowrap; }
+    .news-title { color: var(--charcoal); font-weight: 800; line-height: 1.8; }
     .dayori-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
-    .dayori-card { display: grid; gap: 14px; align-content: start; padding: 24px; border-radius: 22px; background: rgba(255,255,255,.78); box-shadow: 0 12px 28px rgba(88,58,34,.045); transition: transform .18s ease, box-shadow .18s ease; }
+    .dayori-card { position: relative; display: grid; gap: 14px; align-content: start; min-height: 100%; padding: 26px 24px 24px; border-radius: 24px; background: rgba(255,255,255,.78); box-shadow: 0 12px 28px rgba(88,58,34,.045); overflow: hidden; transition: transform .18s ease, box-shadow .18s ease; }
     .dayori-card:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(88,58,34,.08); }
-    .dayori-card h3 { margin: 0; }
+    .dayori-card::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 8px; border-radius: 24px 0 0 24px; background: var(--beige); }
+    .dayori-card::after { position: absolute; right: 18px; top: 14px; color: rgba(75,54,40,.12); font-family: "HuiFont29", "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif; font-size: clamp(2.1rem, 4vw, 3.2rem); line-height: 1; pointer-events: none; }
+    .dayori-card.sitter { background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,232,237,.5)); }
+    .dayori-card.sitter::before { background: var(--pink); }
+    .dayori-card.sitter::after { content: "Sitter"; }
+    .dayori-card.meal { background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,243,201,.58)); }
+    .dayori-card.meal::before { background: var(--yellow); }
+    .dayori-card.meal::after { content: "Cooking"; }
+    .dayori-card.report::before { background: var(--mint-strong); }
+    .dayori-card.report::after { content: "Report"; }
+    .dayori-card > * { position: relative; z-index: 1; }
+    .dayori-card h3 { margin: 0; padding-right: 40px; }
     .dayori-card p { color: var(--muted); }
     .dayori-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; color: var(--muted); font-size: .9rem; font-weight: 700; }
-    .dayori-categories { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-    .dayori-category { padding: 22px; border-radius: 20px; background: rgba(255,255,255,.68); }
-    .dayori-category p { color: var(--muted); }
-    @media (max-width: 860px) { .dayori-grid, .dayori-categories { grid-template-columns: 1fr; } }
+    @media (max-width: 860px) {
+      .news-item { grid-template-columns: 1fr; gap: 8px; padding: 20px 0; }
+      .news-label { justify-self: start; }
+      .dayori-grid { grid-template-columns: 1fr; }
+      .dayori-card h3 { padding-right: 20px; }
+      .dayori-card::after { font-size: 2.2rem; opacity: .85; }
+    }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"トップ","item":"https://nicotto-fukuoka.com/"},{"@type":"ListItem","position":2,"name":"nicottoだより","item":"https://nicotto-fukuoka.com/nicotto-dayori.html"}]}</script>
   <script type="application/ld+json">
@@ -88,6 +111,32 @@
       </div>
     </section>
 
+    <section class="dayori-news">
+      <div class="section-inner">
+        <div class="dayori-news-head">
+          <span class="news-en">News</span>
+          <h2>お知らせ</h2>
+        </div>
+        <div class="news-list" aria-label="nicottoからのお知らせ">
+          <article class="news-item">
+            <time class="news-date" datetime="2026-07-01">2026.07.01</time>
+            <span class="news-label">更新情報</span>
+            <p class="news-title">nicottoだよりを公開しました。ベビーシッター・料理代行のお役立ち情報をお届けします。</p>
+          </article>
+          <article class="news-item">
+            <time class="news-date" datetime="2026-07-01">2026.07.01</time>
+            <span class="news-label">ご案内</span>
+            <p class="news-title">福岡市周辺でのベビーシッター・送迎サポートのご相談を受け付けています。</p>
+          </article>
+          <article class="news-item">
+            <time class="news-date" datetime="2026-07-01">2026.07.01</time>
+            <span class="news-label">ご案内</span>
+            <p class="news-title">料理代行では作り置き・下味冷凍・離乳食・幼児食づくりもご相談いただけます。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section>
       <div class="section-inner">
         <div class="section-head has-marker">
@@ -95,37 +144,24 @@
           <p class="lead">検索されやすい悩みや疑問に答えながら、nicottoのサポート内容も分かる記事を増やしていきます。</p>
         </div>
         <div class="dayori-grid">
-          <a class="dayori-card" href="./dayori/fukuoka-babysitter-first-time.html">
-            <span class="tag pink">お役立ち記事</span>
+          <a class="dayori-card sitter" href="./dayori/fukuoka-babysitter-first-time.html">
+            <span class="tag pink">ベビーシッター</span>
             <h3>福岡で初めてベビーシッターを頼む前に確認すること</h3>
             <p>年齢や生活リズム、送迎の有無、事前面談で確認したいことをまとめました。</p>
-            <div class="dayori-meta"><span>ベビーシッター</span><span>2026.07.01</span></div>
+            <div class="dayori-meta"><span>お役立ち記事</span><span>2026.07.01</span></div>
           </a>
-          <a class="dayori-card" href="./dayori/fukuoka-cooking-service-preparation.html">
-            <span class="tag yellow">お役立ち記事</span>
+          <a class="dayori-card meal" href="./dayori/fukuoka-cooking-service-preparation.html">
+            <span class="tag yellow">料理代行</span>
             <h3>福岡で料理代行を頼む前に準備すること</h3>
             <p>作り置き・下味冷凍・離乳食を相談するときに、事前に整理しておきたいことをまとめました。</p>
-            <div class="dayori-meta"><span>料理代行</span><span>2026.07.01</span></div>
+            <div class="dayori-meta"><span>お役立ち記事</span><span>2026.07.01</span></div>
           </a>
-          <div class="dayori-card">
+          <div class="dayori-card report">
             <span class="tag">活動レポート</span>
             <h3>活動レポートもこちらに掲載します</h3>
             <p>サポート事例や料理代行メニュー例など、実際の活動に近い情報も追加していきます。</p>
             <div class="dayori-meta"><span>準備中</span></div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="band">
-      <div class="section-inner">
-        <div class="section-head has-marker">
-          <h2>掲載する内容</h2>
-        </div>
-        <div class="dayori-categories">
-          <article class="dayori-category"><span class="tag pink">お役立ち記事</span><h3>初めての方向けガイド</h3><p>福岡でベビーシッター・料理代行を利用する前の不安や疑問に答えます。</p></article>
-          <article class="dayori-category"><span class="tag yellow">活動レポート</span><h3>サポートの様子</h3><p>料理代行のメニュー例や、送迎・見守りなどの利用シーンを紹介します。</p></article>
-          <article class="dayori-category"><span class="tag">お知らせ</span><h3>サービスのお知らせ</h3><p>受付状況、対応エリア、キャンペーンなどのお知らせを掲載します。</p></article>
         </div>
       </div>
     </section>
