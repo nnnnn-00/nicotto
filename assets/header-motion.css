@@ -83,6 +83,76 @@
   min-height: 38px;
   padding-block: 7px;
 }
+@supports (animation-timeline: scroll()) {
+  .site-header {
+    animation: nicotto-header-bg linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 90px;
+  }
+  .header-inner {
+    animation: nicotto-header-inner linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 90px;
+  }
+  .logo {
+    animation: nicotto-logo linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 90px;
+  }
+  .logo img {
+    animation: nicotto-logo-img linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 90px;
+  }
+  .logo small {
+    animation: nicotto-logo-sub linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 90px;
+  }
+  .icon-link {
+    animation: nicotto-icon-link linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 90px;
+  }
+  .nav > a {
+    animation: nicotto-nav-link linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 90px;
+  }
+}
+@keyframes nicotto-header-bg {
+  to {
+    background: rgba(255, 253, 250, .985);
+    border-color: rgba(234, 216, 193, .82);
+    box-shadow: 0 14px 30px rgba(88, 58, 34, .075);
+  }
+}
+@keyframes nicotto-header-inner {
+  to { min-height: 62px; }
+}
+@keyframes nicotto-logo {
+  to { gap: 8px; font-size: 1.22rem; }
+}
+@keyframes nicotto-logo-img {
+  to { width: 44px; height: 44px; }
+}
+@keyframes nicotto-logo-sub {
+  to { opacity: .74; }
+}
+@keyframes nicotto-icon-link {
+  to {
+    width: 42px;
+    height: 42px;
+    box-shadow: 0 7px 16px rgba(75, 54, 40, .06);
+  }
+}
+@keyframes nicotto-nav-link {
+  to {
+    min-height: 38px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+}
 @media (max-width: 860px) {
   .site-header.is-scrolled .header-inner { min-height: 64px; }
   .site-header.is-scrolled .logo { font-size: 1.16rem; }
@@ -96,6 +166,15 @@
   }
   .nav > a:hover,
   .nav > a:focus-visible { transform: none; }
+  @keyframes nicotto-header-inner {
+    to { min-height: 64px; }
+  }
+  @keyframes nicotto-logo {
+    to { gap: 8px; font-size: 1.16rem; }
+  }
+  @keyframes nicotto-logo-img {
+    to { width: 42px; height: 42px; }
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .site-header,
@@ -106,7 +185,10 @@
   .icon-link,
   .icon-link img,
   .nav > a,
-  .nav > a::before { transition: none; }
+  .nav > a::before {
+    animation: none;
+    transition: none;
+  }
   .nav > a:hover,
   .nav > a:focus-visible { transform: none; }
 }
