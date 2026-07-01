@@ -48,51 +48,6 @@ document.querySelectorAll(".footer-links").forEach((footerLinks) => {
   else footerLinks.appendChild(dayoriLink);
 });
 
-const swapImage = (image, src, alt, width = "1200", height = "1600") => {
-  if (!image) return;
-  image.src = src;
-  image.alt = alt;
-  image.width = width;
-  image.height = height;
-  image.decoding = "async";
-};
-
-if (window.location.pathname.endsWith("/babysitter.html")) {
-  document.querySelectorAll(".recommend-item").forEach((item) => {
-    if (item.querySelector(".tag")?.textContent.trim() === "定期利用") {
-      swapImage(item.querySelector(".recommend-photo img"), "assets/user-photos/sitter-nap.jpg", "福岡市周辺で定期的にお子さまの生活リズムに寄り添って見守る様子");
-    }
-  });
-}
-
-if (window.location.pathname.endsWith("/pricing.html")) {
-  swapImage(document.querySelector(".pricing-hero .page-visual img"), "assets/user-photos/sitter-peek.jpg", "福岡市周辺のベビーシッター・料理代行の料金相談イメージ");
-}
-
-if (window.location.pathname.endsWith("/contact.html")) {
-  swapImage(document.querySelector(".page-hero.visual-hero .page-visual img"), "assets/user-photos/sitter-care.jpg", "福岡市周辺のベビーシッター・料理代行について相談するイメージ");
-}
-
-const areaInner = document.querySelector("#area .section-inner");
-if (areaInner) {
-  areaInner.innerHTML = `
-    <div class="area-copy">
-      <h2>対応エリア</h2>
-      <p class="lead">福岡市を中心に、近郊エリアまでお伺いします。</p>
-      <ul class="area-tags">
-        <li>福岡市（中央区・博多区・南区・城南区・早良区・西区・東区）</li>
-        <li>春日市</li>
-        <li>大野城市</li>
-        <li>太宰府市</li>
-        <li>那珂川市</li>
-        <li>糸島市（一部）</li>
-      </ul>
-      <p class="area-note">※エリア外でもご相談可能な場合がございます。</p>
-    </div>
-    <figure class="area-map"><img src="assets/fukuoka-area-map.svg" alt="福岡県の対応エリアマップ" loading="lazy" width="920" height="690"></figure>
-  `;
-}
-
 const mainStyle = document.createElement("style");
 mainStyle.textContent = `
 html { scroll-padding-top: 96px; }
@@ -127,8 +82,8 @@ body { padding-top: 74px; }
 .pricing-hero .page-visual img, body:has(.page-hero.visual-hero) .page-hero.visual-hero .page-visual img[src*="assets/user-photos/"] { object-fit: cover; padding: 0; }
 #panel-sitter .pricing-flow { background: linear-gradient(135deg, rgba(255,232,237,.82), rgba(255,255,255,.7)); }
 #panel-sitter .pricing-flow .mini-flow span { background: var(--pink-soft); }
-#panel-meal .pricing-flow { background: linear-gradient(135deg, rgba(255,243,201,.9), rgba(255,253,250,.74) 62%, rgba(255,247,234,.88)); }
-#panel-meal .pricing-flow .mini-flow span { background: var(--yellow-soft); }
+#panel-meal .pricing-flow { background: linear-gradient(135deg, rgba(255,248,218,.96), rgba(255,253,244,.74)); }
+#panel-meal .pricing-flow .mini-flow span { background: rgba(255,241,184,.9); }
 .instagram-gallery img { object-position: center center; }
 .instagram-gallery a:nth-child(1) img { object-position: center 28%; }
 body:has(.page-hero.visual-hero) .split-media .eyebrow { display: none; }
