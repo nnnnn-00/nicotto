@@ -32,6 +32,34 @@ const trackEvent = (eventName, parameters = {}) => {
   });
 };
 
+const isNestedPage = window.location.pathname.includes("/dayori/");
+const dayoriPath = isNestedPage ? "../nicotto-dayori.html" : "./nicotto-dayori.html";
+const isDayoriPage = window.location.pathname.includes("/nicotto-dayori.html") || window.location.pathname.includes("/dayori/");
+
+document.querySelectorAll(".nav").forEach((navElement) => {
+  if (navElement.querySelector('a[href$="nicotto-dayori.html"]')) return;
+  const contactLink = navElement.querySelector('a[href$="contact.html"]');
+  if (!contactLink) return;
+  const dayoriLink = document.createElement("a");
+  dayoriLink.href = dayoriPath;
+  dayoriLink.textContent = "nicottoだより";
+  if (isDayoriPage) dayoriLink.classList.add("active");
+  navElement.insertBefore(dayoriLink, contactLink);
+});
+
+document.querySelectorAll(".footer-links").forEach((footerLinks) => {
+  if (footerLinks.querySelector('a[href$="nicotto-dayori.html"]')) return;
+  const contactLink = footerLinks.querySelector('a[href$="contact.html"]');
+  const dayoriLink = document.createElement("a");
+  dayoriLink.href = dayoriPath;
+  dayoriLink.textContent = "nicottoだより";
+  if (contactLink) {
+    footerLinks.insertBefore(dayoriLink, contactLink);
+  } else {
+    footerLinks.appendChild(dayoriLink);
+  }
+});
+
 document.querySelectorAll('a[href*="line.me"], a[href*="lin.ee"]').forEach((link) => {
   link.addEventListener("click", () => {
     trackEvent("line_click", {
@@ -47,6 +75,16 @@ document.querySelectorAll('a[href$="pricing.html"], a[href*="pricing.html"]').fo
     trackEvent("pricing_click", {
       event_category: "navigation",
       event_label: link.textContent.trim() || link.getAttribute("aria-label") || "ご利用料金",
+      link_url: link.href,
+    });
+  });
+});
+
+document.querySelectorAll('a[href$="nicotto-dayori.html"], a[href*="/dayori/"]').forEach((link) => {
+  link.addEventListener("click", () => {
+    trackEvent("dayori_click", {
+      event_category: "navigation",
+      event_label: link.textContent.trim() || link.getAttribute("aria-label") || "nicottoだより",
       link_url: link.href,
     });
   });
