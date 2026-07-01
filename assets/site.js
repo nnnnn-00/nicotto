@@ -11,9 +11,24 @@ document.querySelectorAll('meta[property="og:image"]').forEach((meta) => {
   const imagePath = meta.getAttribute("content")?.replace(/^https?:\/\/[^/]+(?:\/nicotto)?\//, "") || "assets/nicotto-hero.png";
   meta.setAttribute("content", `${canonicalBaseUrl}/${imagePath}`);
 });
+
 document.querySelectorAll('script[type="application/ld+json"]').forEach((script) => {
   script.textContent = script.textContent.replaceAll("https://nnnnn-00.github.io/nicotto", canonicalBaseUrl);
 });
+
+const seoTitleMap = {
+  "/babysitter.html": "ベビーシッター | 福岡市周辺の送迎・病児保育・単発利用 nicotto",
+  "/cooking.html": "料理代行 | 福岡市周辺の作り置き・離乳食・幼児食 nicotto",
+  "/pricing.html": "料金 | 福岡市のベビーシッター・料理代行 料金表 nicotto",
+  "/contact.html": "お問い合わせ | 福岡市のベビーシッター・料理代行相談 nicotto",
+};
+
+if (seoTitleMap[normalizedPath]) {
+  document.title = seoTitleMap[normalizedPath];
+  document.querySelectorAll('meta[property="og:title"]').forEach((meta) => {
+    meta.setAttribute("content", seoTitleMap[normalizedPath]);
+  });
+}
 
 const toggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".nav");
