@@ -1,6 +1,12 @@
 const canonicalBaseUrl = "https://nicotto-fukuoka.com";
 const normalizedPath = window.location.pathname.endsWith("/index.html") ? "/" : window.location.pathname;
 const canonicalUrl = `${canonicalBaseUrl}${normalizedPath}`;
+const isDayoriPaused = true;
+
+if (isDayoriPaused && normalizedPath.startsWith("/dayori/")) {
+  window.location.replace("../nicotto-dayori.html");
+}
+
 const canonicalLink = document.querySelector('link[rel="canonical"]') || document.createElement("link");
 canonicalLink.rel = "canonical";
 canonicalLink.href = canonicalUrl;
@@ -65,26 +71,32 @@ const isNestedPage = window.location.pathname.includes("/dayori/");
 const dayoriPath = isNestedPage ? "../nicotto-dayori.html" : "./nicotto-dayori.html";
 const isDayoriPage = window.location.pathname.includes("/nicotto-dayori.html") || window.location.pathname.includes("/dayori/");
 
-document.querySelectorAll(".nav").forEach((navElement) => {
-  if (navElement.querySelector('a[href$="nicotto-dayori.html"]')) return;
-  const contactLink = navElement.querySelector('a[href$="contact.html"]');
-  if (!contactLink) return;
-  const dayoriLink = document.createElement("a");
-  dayoriLink.href = dayoriPath;
-  dayoriLink.textContent = "nicottoだより";
-  if (isDayoriPage) dayoriLink.classList.add("active");
-  navElement.insertBefore(dayoriLink, contactLink);
-});
+if (!isDayoriPaused) {
+  document.querySelectorAll(".nav").forEach((navElement) => {
+    if (navElement.querySelector('a[href$="nicotto-dayori.html"]')) return;
+    const contactLink = navElement.querySelector('a[href$="contact.html"]');
+    if (!contactLink) return;
+    const dayoriLink = document.createElement("a");
+    dayoriLink.href = dayoriPath;
+    dayoriLink.textContent = "nicottoだより";
+    if (isDayoriPage) dayoriLink.classList.add("active");
+    navElement.insertBefore(dayoriLink, contactLink);
+  });
 
-document.querySelectorAll(".footer-links").forEach((footerLinks) => {
-  if (footerLinks.querySelector('a[href$="nicotto-dayori.html"]')) return;
-  const contactLink = footerLinks.querySelector('a[href$="contact.html"]');
-  const dayoriLink = document.createElement("a");
-  dayoriLink.href = dayoriPath;
-  dayoriLink.textContent = "nicottoだより";
-  if (contactLink) footerLinks.insertBefore(dayoriLink, contactLink);
-  else footerLinks.appendChild(dayoriLink);
-});
+  document.querySelectorAll(".footer-links").forEach((footerLinks) => {
+    if (footerLinks.querySelector('a[href$="nicotto-dayori.html"]')) return;
+    const contactLink = footerLinks.querySelector('a[href$="contact.html"]');
+    const dayoriLink = document.createElement("a");
+    dayoriLink.href = dayoriPath;
+    dayoriLink.textContent = "nicottoだより";
+    if (contactLink) footerLinks.insertBefore(dayoriLink, contactLink);
+    else footerLinks.appendChild(dayoriLink);
+  });
+} else {
+  document.querySelectorAll('a[href$="nicotto-dayori.html"], a[href*="/dayori/"]').forEach((link) => {
+    if (!normalizedPath.endsWith("/nicotto-dayori.html")) link.remove();
+  });
+}
 
 const mainStyle = document.createElement("style");
 mainStyle.textContent = `
@@ -149,9 +161,11 @@ document.querySelectorAll('a[href$="pricing.html"], a[href*="pricing.html"]').fo
   link.addEventListener("click", () => trackEvent("pricing_click", { event_category: "navigation", event_label: link.textContent.trim() || link.getAttribute("aria-label") || "ご利用料金", link_url: link.href }));
 });
 
-document.querySelectorAll('a[href$="nicotto-dayori.html"], a[href*="/dayori/"]').forEach((link) => {
-  link.addEventListener("click", () => trackEvent("dayori_click", { event_category: "navigation", event_label: link.textContent.trim() || link.getAttribute("aria-label") || "nicottoだより", link_url: link.href }));
-});
+if (!isDayoriPaused) {
+  document.querySelectorAll('a[href$="nicotto-dayori.html"], a[href*="/dayori/"]').forEach((link) => {
+    link.addEventListener("click", () => trackEvent("dayori_click", { event_category: "navigation", event_label: link.textContent.trim() || link.getAttribute("aria-label") || "nicottoだより", link_url: link.href }));
+  });
+}
 
 document.querySelectorAll(".instagram-gallery").forEach((gallery) => {
   const posts = gallery.querySelectorAll("a");
