@@ -62,6 +62,27 @@ document.querySelectorAll(".footer-links").forEach((footerLinks) => {
 
 const navInteractionStyle = document.createElement("style");
 navInteractionStyle.textContent = `
+html {
+  scroll-padding-top: 96px;
+}
+body {
+  padding-top: 74px;
+}
+.site-header {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(255, 253, 250, .96);
+  box-shadow: 0 10px 26px rgba(75, 54, 40, .055);
+}
+@supports (backdrop-filter: blur(12px)) {
+  .site-header {
+    backdrop-filter: blur(12px);
+  }
+}
 @media (min-width: 861px) {
   .nav > a {
     position: relative;
@@ -107,6 +128,12 @@ navInteractionStyle.textContent = `
   }
 }
 @media (max-width: 860px) {
+  body {
+    padding-top: 74px;
+  }
+  .site-header {
+    box-shadow: 0 8px 20px rgba(75, 54, 40, .06);
+  }
   .nav > a {
     border-radius: 12px;
     border-bottom: 0;
