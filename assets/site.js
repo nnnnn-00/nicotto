@@ -1,7 +1,7 @@
 const canonicalBaseUrl = "https://nicotto-fukuoka.com";
 const normalizedPath = window.location.pathname.endsWith("/index.html") ? "/" : window.location.pathname;
 const canonicalUrl = `${canonicalBaseUrl}${normalizedPath}`;
-const isDayoriPaused = true;
+const isDayoriPaused = false;
 
 if (isDayoriPaused && normalizedPath.startsWith("/dayori/")) {
   window.location.replace("../nicotto-dayori.html");
