@@ -27,36 +27,44 @@
   <style>
     .dayori-news { background: linear-gradient(180deg, rgba(255,255,255,.58), rgba(255,247,234,.5)); }
     .dayori-news-head { text-align: center; display: grid; gap: 8px; margin-bottom: 34px; }
-    .dayori-news-head .news-en { color: var(--mint-strong); font-weight: 900; letter-spacing: .14em; font-size: .92rem; }
+    .dayori-news-head .news-en,
+    .dayori-section-en { color: var(--mint-strong); font-weight: 900; letter-spacing: .14em; font-size: .92rem; }
     .dayori-news-head h2 { font-size: clamp(1.9rem, 4vw, 2.85rem); }
     .news-list { max-width: 960px; margin: 0 auto; border-top: 1px solid rgba(75,54,40,.12); }
     .news-item { display: grid; grid-template-columns: 120px 116px 1fr; gap: 18px; align-items: center; padding: 22px 0; border-bottom: 1px solid rgba(75,54,40,.12); }
     .news-date { color: var(--brown); font-weight: 900; letter-spacing: .04em; }
     .news-label { display: inline-flex; align-items: center; justify-content: center; min-height: 30px; padding: 4px 14px; border-radius: 999px; border: 1px solid rgba(107,191,162,.55); background: rgba(255,255,255,.78); color: #2f6f5d; font-weight: 900; font-size: .82rem; white-space: nowrap; }
     .news-title { color: var(--charcoal); font-weight: 800; line-height: 1.8; }
-    .dayori-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
-    .dayori-card { position: relative; display: grid; gap: 14px; align-content: start; min-height: 100%; padding: 26px 24px 24px; border-radius: 24px; background: rgba(255,255,255,.78); box-shadow: 0 12px 28px rgba(88,58,34,.045); overflow: hidden; transition: transform .18s ease, box-shadow .18s ease; }
-    .dayori-card:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(88,58,34,.08); }
-    .dayori-card::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 8px; border-radius: 24px 0 0 24px; background: var(--beige); }
-    .dayori-card::after { position: absolute; right: 18px; top: 14px; color: rgba(75,54,40,.12); font-family: "HuiFont29", "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif; font-size: clamp(2.1rem, 4vw, 3.2rem); line-height: 1; pointer-events: none; }
-    .dayori-card.sitter { background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,232,237,.5)); }
-    .dayori-card.sitter::before { background: var(--pink); }
-    .dayori-card.sitter::after { content: "Sitter"; }
-    .dayori-card.meal { background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,243,201,.58)); }
-    .dayori-card.meal::before { background: var(--yellow); }
-    .dayori-card.meal::after { content: "Cooking"; }
-    .dayori-card.report::before { background: var(--mint-strong); }
-    .dayori-card.report::after { content: "Report"; }
-    .dayori-card > * { position: relative; z-index: 1; }
-    .dayori-card h3 { margin: 0; padding-right: 40px; }
+    .dayori-info-head { display: grid; gap: 8px; margin-bottom: 34px; }
+    .dayori-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+    .dayori-card { position: relative; display: grid; grid-template-rows: auto 1fr; min-height: 100%; border-radius: 24px; background: rgba(255,255,255,.82); box-shadow: 0 12px 28px rgba(88,58,34,.045); overflow: hidden; transition: transform .18s ease, box-shadow .18s ease; }
+    .dayori-card:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(88,58,34,.09); }
+    .dayori-thumb { position: relative; overflow: hidden; background: var(--ivory); }
+    .dayori-thumb img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; transition: transform .35s ease; }
+    .dayori-card:hover .dayori-thumb img { transform: scale(1.035); }
+    .dayori-thumb::after { content: ""; position: absolute; inset: auto 0 0; height: 42%; background: linear-gradient(180deg, rgba(255,255,255,0), rgba(75,54,40,.18)); pointer-events: none; }
+    .dayori-card.sitter .dayori-thumb::before,
+    .dayori-card.meal .dayori-thumb::before,
+    .dayori-card.report .dayori-thumb::before { content: ""; position: absolute; right: -22px; bottom: -44px; width: 180px; height: 180px; border-radius: 50%; z-index: 1; opacity: .8; }
+    .dayori-card.sitter .dayori-thumb::before { background: rgba(255,232,237,.78); }
+    .dayori-card.meal .dayori-thumb::before { background: rgba(255,243,201,.86); }
+    .dayori-card.report .dayori-thumb::before { background: rgba(223,244,236,.86); }
+    .dayori-card-body { position: relative; display: grid; gap: 14px; align-content: start; padding: 24px; }
+    .dayori-card-body::after { position: absolute; right: 20px; top: 18px; color: rgba(75,54,40,.12); font-family: "HuiFont29", "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1; pointer-events: none; }
+    .dayori-card.sitter .dayori-card-body::after { content: "Sitter"; }
+    .dayori-card.meal .dayori-card-body::after { content: "Cooking"; }
+    .dayori-card.report .dayori-card-body::after { content: "Report"; }
+    .dayori-card h3 { margin: 0; padding-right: 28px; font-size: 1.18rem; line-height: 1.65; }
     .dayori-card p { color: var(--muted); }
     .dayori-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; color: var(--muted); font-size: .9rem; font-weight: 700; }
+    .dayori-arrow { position: absolute; right: 20px; bottom: 18px; width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: rgba(255,255,255,.86); color: var(--brown); font-weight: 900; box-shadow: 0 8px 18px rgba(75,54,40,.08); }
+    .dayori-card-body > *:not(.dayori-arrow) { position: relative; z-index: 1; }
     @media (max-width: 860px) {
       .news-item { grid-template-columns: 1fr; gap: 8px; padding: 20px 0; }
       .news-label { justify-self: start; }
       .dayori-grid { grid-template-columns: 1fr; }
       .dayori-card h3 { padding-right: 20px; }
-      .dayori-card::after { font-size: 2.2rem; opacity: .85; }
+      .dayori-card-body::after { font-size: 2.2rem; opacity: .85; }
     }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"トップ","item":"https://nicotto-fukuoka.com/"},{"@type":"ListItem","position":2,"name":"nicottoだより","item":"https://nicotto-fukuoka.com/nicotto-dayori.html"}]}</script>
@@ -139,28 +147,41 @@
 
     <section>
       <div class="section-inner">
-        <div class="section-head has-marker">
-          <h2>新着記事</h2>
-          <p class="lead">検索されやすい悩みや疑問に答えながら、nicottoのサポート内容も分かる記事を増やしていきます。</p>
+        <div class="dayori-info-head">
+          <span class="dayori-section-en">New Topics</span>
+          <h2>新着情報</h2>
+          <p class="lead">福岡のベビーシッター・料理代行に関するお役立ち記事や、nicottoの活動レポートを更新していきます。</p>
         </div>
         <div class="dayori-grid">
           <a class="dayori-card sitter" href="./dayori/fukuoka-babysitter-first-time.html">
-            <span class="tag pink">ベビーシッター</span>
-            <h3>福岡で初めてベビーシッターを頼む前に確認すること</h3>
-            <p>年齢や生活リズム、送迎の有無、事前面談で確認したいことをまとめました。</p>
-            <div class="dayori-meta"><span>お役立ち記事</span><span>2026.07.01</span></div>
+            <div class="dayori-thumb"><img src="public/images/hero-babysitter.jpeg" alt="福岡で初めてベビーシッターを頼む前に確認すること" loading="lazy" width="1800" height="1586"></div>
+            <div class="dayori-card-body">
+              <span class="tag pink">ベビーシッター</span>
+              <h3>福岡で初めてベビーシッターを頼む前に確認すること</h3>
+              <p>年齢や生活リズム、送迎の有無、事前面談で確認したいことをまとめました。</p>
+              <div class="dayori-meta"><span>お役立ち記事</span><span>2026.07.01</span></div>
+              <span class="dayori-arrow">→</span>
+            </div>
           </a>
           <a class="dayori-card meal" href="./dayori/fukuoka-cooking-service-preparation.html">
-            <span class="tag yellow">料理代行</span>
-            <h3>福岡で料理代行を頼む前に準備すること</h3>
-            <p>作り置き・下味冷凍・離乳食を相談するときに、事前に整理しておきたいことをまとめました。</p>
-            <div class="dayori-meta"><span>お役立ち記事</span><span>2026.07.01</span></div>
+            <div class="dayori-thumb"><img src="public/images/hero-cooking.jpeg" alt="福岡で料理代行を頼む前に準備すること" loading="lazy" width="1800" height="1215"></div>
+            <div class="dayori-card-body">
+              <span class="tag yellow">料理代行</span>
+              <h3>福岡で料理代行を頼む前に準備すること</h3>
+              <p>作り置き・下味冷凍・離乳食を相談するときに、事前に整理しておきたいことをまとめました。</p>
+              <div class="dayori-meta"><span>お役立ち記事</span><span>2026.07.01</span></div>
+              <span class="dayori-arrow">→</span>
+            </div>
           </a>
           <div class="dayori-card report">
-            <span class="tag">活動レポート</span>
-            <h3>活動レポートもこちらに掲載します</h3>
-            <p>サポート事例や料理代行メニュー例など、実際の活動に近い情報も追加していきます。</p>
-            <div class="dayori-meta"><span>準備中</span></div>
+            <div class="dayori-thumb"><img src="assets/user-photos/cooking-meal-prep.jpg" alt="nicottoの活動レポートのイメージ" loading="lazy" width="1600" height="1191"></div>
+            <div class="dayori-card-body">
+              <span class="tag">活動レポート</span>
+              <h3>活動レポートもこちらに掲載します</h3>
+              <p>サポート事例や料理代行メニュー例など、実際の活動に近い情報も追加していきます。</p>
+              <div class="dayori-meta"><span>準備中</span></div>
+              <span class="dayori-arrow">→</span>
+            </div>
           </div>
         </div>
       </div>
