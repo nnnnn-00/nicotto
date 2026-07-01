@@ -17,23 +17,39 @@ document.querySelectorAll('meta[property="og:image"]').forEach((meta) => {
   const imagePath = meta.getAttribute("content")?.replace(/^https?:\/\/[^/]+(?:\/nicotto)?\//, "") || "assets/nicotto-hero.png";
   meta.setAttribute("content", `${canonicalBaseUrl}/${imagePath}`);
 });
-
 document.querySelectorAll('script[type="application/ld+json"]').forEach((script) => {
   script.textContent = script.textContent.replaceAll("https://nnnnn-00.github.io/nicotto", canonicalBaseUrl);
 });
 
-const seoTitleMap = {
-  "/babysitter.html": "ベビーシッター | 福岡市周辺の送迎・病児保育・単発利用 nicotto",
-  "/cooking.html": "料理代行 | 福岡市周辺の作り置き・離乳食・幼児食 nicotto",
-  "/pricing.html": "料金 | 福岡市のベビーシッター・料理代行 料金表 nicotto",
-  "/contact.html": "お問い合わせ | 福岡市のベビーシッター・料理代行相談 nicotto",
+const seoMetaMap = {
+  "/": {
+    title: "福岡のベビーシッター・料理代行 | 送迎・作り置き nicotto",
+    description: "福岡市を中心に福岡県内で相談できるベビーシッター・料理代行。送迎、見守り、病児保育相談、作り置き、離乳食・幼児食づくりまで子育て家庭をサポートします。",
+  },
+  "/babysitter.html": {
+    title: "福岡のベビーシッター | 送迎・病児保育・単発定期利用 nicotto",
+    description: "福岡市を中心に、通常保育・送迎・食事補助・病児保育相談まで対応するベビーシッター。単発利用も定期利用もご家庭に合わせて相談できます。",
+  },
+  "/cooking.html": {
+    title: "福岡の料理代行・作り置き | 離乳食・幼児食も相談 nicotto",
+    description: "福岡市を中心に料理代行・作り置き・下味冷凍をサポート。離乳食、幼児食、アレルギー対応相談まで、子育て家庭の食事づくりを支えます。",
+  },
+  "/pricing.html": {
+    title: "料金 | 福岡のベビーシッター・料理代行 料金表 nicotto",
+    description: "福岡市周辺のベビーシッター・料理代行料金表。単発・定期・送迎・病児保育相談、料理代行の初回お試しや作り置き基本プランを確認できます。",
+  },
+  "/contact.html": {
+    title: "お問い合わせ | 福岡のベビーシッター・料理代行相談 nicotto",
+    description: "福岡市周辺でベビーシッター・送迎・料理代行を相談したい方へ。LINEまたはフォームから、希望日時・エリア・お子さまの年齢を送れます。",
+  },
 };
 
-if (seoTitleMap[normalizedPath]) {
-  document.title = seoTitleMap[normalizedPath];
-  document.querySelectorAll('meta[property="og:title"]').forEach((meta) => {
-    meta.setAttribute("content", seoTitleMap[normalizedPath]);
-  });
+if (seoMetaMap[normalizedPath]) {
+  const { title, description } = seoMetaMap[normalizedPath];
+  document.title = title;
+  document.querySelector('meta[name="description"]')?.setAttribute("content", description);
+  document.querySelectorAll('meta[property="og:title"]').forEach((meta) => meta.setAttribute("content", title));
+  document.querySelectorAll('meta[property="og:description"]').forEach((meta) => meta.setAttribute("content", description));
 }
 
 const injectJsonLd = (id, data) => {
@@ -45,15 +61,8 @@ const injectJsonLd = (id, data) => {
   document.head.appendChild(script);
 };
 
-const baseProvider = {
-  "@type": "LocalBusiness",
-  "@id": `${canonicalBaseUrl}/#business`,
-  name: "nicotto",
-  url: `${canonicalBaseUrl}/`,
-  areaServed: "福岡市周辺・福岡県",
-};
-
 const serviceArea = [
+  "福岡県",
   "福岡市中央区",
   "福岡市博多区",
   "福岡市南区",
@@ -63,18 +72,64 @@ const serviceArea = [
   "福岡市城南区",
   "春日市",
   "大野城市",
-  "福岡県",
+  "太宰府市",
+  "那珂川市",
+  "糸島市",
 ];
 
-const enhancedServiceSchemaMap = {
+const baseProvider = {
+  "@type": "LocalBusiness",
+  "@id": `${canonicalBaseUrl}/#business`,
+  name: "nicotto",
+  url: `${canonicalBaseUrl}/`,
+  image: `${canonicalBaseUrl}/assets/nicotto-hero.png`,
+  description: "福岡市を中心に、福岡県内の子育て家庭へベビーシッター・送迎サポート・料理代行を行っています。",
+  areaServed: serviceArea,
+  priceRange: "¥¥",
+  sameAs: ["https://www.instagram.com/nicotto_fukuoka/", "https://line.me/R/ti/p/@788kxjco"],
+};
+
+injectJsonLd("enhanced-local-business-schema", {
+  "@context": "https://schema.org",
+  ...baseProvider,
+  serviceArea: { "@type": "AdministrativeArea", name: "福岡県" },
+  knowsAbout: ["福岡 ベビーシッター", "福岡 料理代行", "送迎サポート", "病児保育相談", "作り置き", "離乳食", "幼児食"],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "nicottoのサービス",
+    itemListElement: [
+      {
+        "@type": "OfferCatalog",
+        name: "ベビーシッター",
+        itemListElement: [
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "ベビーシッター", areaServed: serviceArea } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "送迎サポート", areaServed: serviceArea } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "病児保育相談", areaServed: serviceArea } },
+        ],
+      },
+      {
+        "@type": "OfferCatalog",
+        name: "料理代行",
+        itemListElement: [
+          { "@type": "Offer", price: "4980", priceCurrency: "JPY", itemOffered: { "@type": "Service", name: "料理代行 初回お試し", areaServed: serviceArea } },
+          { "@type": "Offer", price: "5980", priceCurrency: "JPY", itemOffered: { "@type": "Service", name: "作り置き料理代行", areaServed: serviceArea } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "離乳食・幼児食づくり", areaServed: serviceArea } },
+        ],
+      },
+    ],
+  },
+});
+
+const pageSchemaMap = {
   "/babysitter.html": {
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": `${canonicalBaseUrl}/babysitter.html#enhanced-service`,
-    name: "福岡市周辺のベビーシッター・送迎サポート",
+    name: "福岡のベビーシッター・送迎サポート",
+    alternateName: ["福岡 ベビーシッター", "福岡市 ベビーシッター", "福岡 送迎サポート"],
     serviceType: "ベビーシッター",
     category: ["ベビーシッター", "送迎サポート", "病児保育相談", "単発利用", "定期利用"],
-    description: "福岡市周辺で、通常保育、保育園や習い事の送迎、食事補助、病児保育相談、単発・定期利用までご家庭に合わせてサポートします。",
+    description: seoMetaMap["/babysitter.html"].description,
     provider: baseProvider,
     areaServed: serviceArea,
     url: `${canonicalBaseUrl}/babysitter.html`,
@@ -82,10 +137,9 @@ const enhancedServiceSchemaMap = {
       "@type": "OfferCatalog",
       name: "ベビーシッター料金・対応内容",
       itemListElement: [
-        { "@type": "Offer", name: "単発ベビーシッター", price: "2200", priceCurrency: "JPY", unitText: "1時間", itemOffered: { "@type": "Service", name: "単発ベビーシッター" } },
-        { "@type": "Offer", name: "定期ベビーシッター", price: "1800", priceCurrency: "JPY", unitText: "1時間", itemOffered: { "@type": "Service", name: "定期ベビーシッター" } },
-        { "@type": "Offer", name: "送迎サポート", price: "1500", priceCurrency: "JPY", unitText: "1回", itemOffered: { "@type": "Service", name: "送迎サポート" } },
-        { "@type": "Offer", name: "病児保育相談", priceSpecification: { "@type": "UnitPriceSpecification", priceCurrency: "JPY", price: "500", unitText: "1時間加算" }, itemOffered: { "@type": "Service", name: "病児保育相談" } },
+        { "@type": "Offer", name: "単発ベビーシッター", price: "2200", priceCurrency: "JPY", unitText: "1時間" },
+        { "@type": "Offer", name: "定期ベビーシッター", price: "1800", priceCurrency: "JPY", unitText: "1時間" },
+        { "@type": "Offer", name: "送迎サポート", price: "1500", priceCurrency: "JPY", unitText: "1回" },
       ],
     },
   },
@@ -93,10 +147,11 @@ const enhancedServiceSchemaMap = {
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": `${canonicalBaseUrl}/cooking.html#enhanced-service`,
-    name: "福岡市周辺の料理代行・作り置き",
+    name: "福岡の料理代行・作り置き",
+    alternateName: ["福岡 料理代行", "福岡市 料理代行", "福岡 作り置き代行"],
     serviceType: "料理代行",
     category: ["料理代行", "作り置き", "下味冷凍", "離乳食づくり", "幼児食づくり", "買い物代行相談"],
-    description: "福岡市周辺の子育て家庭向けに、作り置き、下味冷凍、離乳食、幼児食、アレルギー対応相談まで、毎日の食事づくりをサポートします。",
+    description: seoMetaMap["/cooking.html"].description,
     provider: baseProvider,
     areaServed: serviceArea,
     url: `${canonicalBaseUrl}/cooking.html`,
@@ -104,9 +159,9 @@ const enhancedServiceSchemaMap = {
       "@type": "OfferCatalog",
       name: "料理代行料金・対応内容",
       itemListElement: [
-        { "@type": "Offer", name: "料理代行 初回お試しプラン", price: "4980", priceCurrency: "JPY", itemOffered: { "@type": "Service", name: "料理代行 初回お試し" } },
-        { "@type": "Offer", name: "料理代行 基本プラン", price: "5980", priceCurrency: "JPY", itemOffered: { "@type": "Service", name: "作り置き料理代行" } },
-        { "@type": "Offer", name: "買い物代行", price: "1100", priceCurrency: "JPY", itemOffered: { "@type": "Service", name: "買い物代行" } },
+        { "@type": "Offer", name: "料理代行 初回お試しプラン", price: "4980", priceCurrency: "JPY" },
+        { "@type": "Offer", name: "料理代行 基本プラン", price: "5980", priceCurrency: "JPY" },
+        { "@type": "Offer", name: "買い物代行", price: "1100", priceCurrency: "JPY" },
       ],
     },
   },
@@ -114,8 +169,8 @@ const enhancedServiceSchemaMap = {
     "@context": "https://schema.org",
     "@type": "OfferCatalog",
     "@id": `${canonicalBaseUrl}/pricing.html#pricing-offers`,
-    name: "福岡市周辺のベビーシッター・料理代行料金表",
-    description: "nicottoのベビーシッター、送迎サポート、病児保育相談、料理代行、作り置き、下味冷凍、離乳食・幼児食づくりの料金目安です。",
+    name: "福岡のベビーシッター・料理代行料金表",
+    description: seoMetaMap["/pricing.html"].description,
     url: `${canonicalBaseUrl}/pricing.html`,
     provider: baseProvider,
     itemListElement: [
@@ -124,27 +179,29 @@ const enhancedServiceSchemaMap = {
       { "@type": "Offer", name: "送迎のみ", price: "1500", priceCurrency: "JPY", unitText: "1回" },
       { "@type": "Offer", name: "料理代行 初回お試しプラン", price: "4980", priceCurrency: "JPY" },
       { "@type": "Offer", name: "料理代行 基本プラン", price: "5980", priceCurrency: "JPY" },
-      { "@type": "Offer", name: "買い物代行", price: "1100", priceCurrency: "JPY" },
     ],
   },
 };
 
-if (enhancedServiceSchemaMap[normalizedPath]) {
-  injectJsonLd("enhanced-service-schema", enhancedServiceSchemaMap[normalizedPath]);
-}
+if (pageSchemaMap[normalizedPath]) injectJsonLd("enhanced-page-schema", pageSchemaMap[normalizedPath]);
+
+const trackEvent = (eventName, parameters = {}) => {
+  if (typeof window.gtag !== "function") return;
+  window.gtag("event", eventName, { page_path: window.location.pathname, page_title: document.title, ...parameters });
+};
 
 if (normalizedPath.endsWith("/pricing.html")) {
   const pricingFaqs = [
     ["福岡でベビーシッターを1時間だけ頼めますか？", "はい。単発依頼は1時間単位でご相談いただけます。希望日時、サポート内容、お子さまの年齢を確認したうえで対応可否をご案内します。"],
     ["福岡市で送迎のみのベビーシッター料金はいくらですか？", "送迎のみは1回1,500円です。保育園、幼稚園、習い事、ご自宅間の経路や引き渡し方法を事前に確認します。"],
     ["料理代行の作り置きだけでも頼めますか？", "はい。作り置きのみのご相談も可能です。2時間・5品保証の基本プランを目安に、ご家庭の人数や希望メニューに合わせて調整します。"],
-    ["料理代行では何品くらい作れますか？", "目安は2時間で5品保証、3時間で8品前後、4時間で10〜12品前後です。キッチン環境やメニュー内容により変わるため、事前にご案内します。"],
     ["離乳食や幼児食も料金内で相談できますか？", "離乳食対応は基本時間内で無料相談できます。月齢、食べ進み、アレルギー、保存方法を確認しながら無理のない内容をご提案します。"],
     ["福岡市外でもベビーシッターや料理代行を頼めますか？", "福岡市を中心に、春日市・大野城市など福岡県内もご相談いただけます。訪問先や時間帯により対応可否と交通費を確認します。"],
   ];
   const faqContainer = document.querySelector(".faq");
   if (faqContainer && !faqContainer.dataset.enhancedPricingFaq) {
     pricingFaqs.forEach(([question, answer]) => {
+      if (faqContainer.textContent.includes(question)) return;
       const detail = document.createElement("details");
       detail.innerHTML = `<summary>${question}</summary><p>${answer}</p>`;
       faqContainer.appendChild(detail);
@@ -154,11 +211,7 @@ if (normalizedPath.endsWith("/pricing.html")) {
   injectJsonLd("pricing-faq-schema", {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: pricingFaqs.map(([question, answer]) => ({
-      "@type": "Question",
-      name: question,
-      acceptedAnswer: { "@type": "Answer", text: answer },
-    })),
+    mainEntity: pricingFaqs.map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })),
   });
 }
 
@@ -190,14 +243,6 @@ main > section:not(.hero):not(.page-hero) {
 }
 `;
 document.head.appendChild(performanceStyle);
-
-const toggle = document.querySelector(".menu-toggle");
-const nav = document.querySelector(".nav");
-
-const trackEvent = (eventName, parameters = {}) => {
-  if (typeof window.gtag !== "function") return;
-  window.gtag("event", eventName, { page_path: window.location.pathname, page_title: document.title, ...parameters });
-};
 
 const isNestedPage = window.location.pathname.includes("/dayori/");
 const dayoriPath = isNestedPage ? "../nicotto-dayori.html" : "./nicotto-dayori.html";
@@ -308,6 +353,8 @@ document.querySelectorAll(".section-head h2").forEach((heading) => {
   if (heading.textContent.trim() === "こんなお悩みありませんか") heading.innerHTML = 'こんな<span class="marker-yellow">お悩みありませんか</span>';
 });
 
+const toggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector(".nav");
 if (toggle && nav) {
   toggle.addEventListener("click", () => {
     const isOpen = nav.classList.toggle("open");
