@@ -25,11 +25,21 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="stylesheet" href="assets/styles.css?v=2">
   <style>
+    .pricing-hero .page-visual img {
+      object-fit: cover;
+      padding: 0;
+    }
     #panel-sitter .pricing-flow {
       background: linear-gradient(135deg, rgba(255, 246, 248, .9), rgba(255, 251, 252, .72));
     }
     #panel-sitter .pricing-flow .mini-flow span {
       background: rgba(255, 232, 237, .86);
+    }
+    #panel-meal .pricing-flow {
+      background: linear-gradient(135deg, rgba(255, 243, 201, .9), rgba(255, 253, 250, .74) 62%, rgba(255, 247, 234, .88));
+    }
+    #panel-meal .pricing-flow .mini-flow span {
+      background: var(--yellow-soft);
     }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"トップ","item":"https://nicotto-fukuoka.com/"},{"@type":"ListItem","position":2,"name":"ご利用料金","item":"https://nicotto-fukuoka.com/pricing.html"}]}</script>
@@ -60,7 +70,7 @@
           <h1>ご利用料金</h1>
           <p class="lead">ベビーシッターと料理代行の料金を、<br>サービス別に分けて確認できます。内容・量・ご家庭の状況により変わる部分は、事前にお見積りします。</p>
         </div>
-        <div class="page-visual"><img src="assets/logo-nicotto.png" alt="nicottoの料金案内イメージ" width="1242" height="1242"></div>
+        <div class="page-visual"><img src="assets/user-photos/sitter-peek.jpg" alt="福岡市周辺のベビーシッター・料理代行の料金相談イメージ" width="1200" height="1600" decoding="async"></div>
       </div>
     </section>
 
@@ -80,27 +90,12 @@
             </div>
 
             <div class="price-summary-grid sitter">
-              <article class="price-summary">
-                <span>初回事前面談</span>
-                <strong>1,500円</strong>
-                <p>事前に内容を確認するための<br>面談料金です。</p>
-              </article>
-              <article class="price-summary">
-                <span>単発依頼</span>
-                <strong>2,200円<small>/時</small></strong>
-                <p>必要な日時だけ、<br>見守りや生活補助を相談できます。</p>
-              </article>
-              <article class="price-summary">
-                <span>定期依頼</span>
-                <strong>1,800円<small>/時</small></strong>
-                <p>毎週の送迎や保育など、<br>継続利用向けの料金です。</p>
-              </article>
+              <article class="price-summary"><span>初回事前面談</span><strong>1,500円</strong><p>事前に内容を確認するための<br>面談料金です。</p></article>
+              <article class="price-summary"><span>単発依頼</span><strong>2,200円<small>/時</small></strong><p>必要な日時だけ、<br>見守りや生活補助を相談できます。</p></article>
+              <article class="price-summary"><span>定期依頼</span><strong>1,800円<small>/時</small></strong><p>毎週の送迎や保育など、<br>継続利用向けの料金です。</p></article>
             </div>
 
-            <div class="pricing-note-list">
-              <span>病児保育OK</span>
-              <span>サービス手数料なし</span>
-            </div>
+            <div class="pricing-note-list"><span>病児保育OK</span><span>サービス手数料なし</span></div>
 
             <div class="table-wrap">
               <table class="table pricing-table">
@@ -134,24 +129,11 @@
             </div>
 
             <div class="price-summary-grid meal">
-              <article class="price-summary">
-                <span>初回お試しプラン</span>
-                <strong>4,980円</strong>
-                <p>2時間・5品保証。はじめての方におすすめです。</p>
-              </article>
-              <article class="price-summary">
-                <span>基本プラン</span>
-                <strong>5,980円〜</strong>
-                <p>2時間・5品保証から。内容や量に合わせて調整します。</p>
-              </article>
+              <article class="price-summary"><span>初回お試しプラン</span><strong>4,980円</strong><p>2時間・5品保証。はじめての方におすすめです。</p></article>
+              <article class="price-summary"><span>基本プラン</span><strong>5,980円〜</strong><p>2時間・5品保証から。内容や量に合わせて調整します。</p></article>
             </div>
 
-            <div class="pricing-note-list meal">
-              <span>品数は自由に</span>
-              <span>メニューは自由に</span>
-              <span>下味冷凍OK</span>
-              <span>買い物代行・相談OK</span>
-            </div>
+            <div class="pricing-note-list meal"><span>品数は自由に</span><span>メニューは自由に</span><span>下味冷凍OK</span><span>買い物代行・相談OK</span></div>
 
             <div class="table-wrap">
               <table class="table pricing-table">
@@ -165,18 +147,8 @@
             </div>
 
             <div class="pricing-extra-grid">
-              <article>
-                <h3>オプション</h3>
-                <ul class="list meal">
-                  <li>買い物代行 +1,100円</li>
-                  <li>離乳食対応 無料（基本時間内）</li>
-                  <li>下味冷凍OK</li>
-                </ul>
-              </article>
-              <article>
-                <h3>定期利用でお得に</h3>
-                <p>月2回以上のご利用で、定期割引を適用します。<br>忙しい日の味方に、いつでもお得にご利用いただけます。</p>
-              </article>
+              <article><h3>オプション</h3><ul class="list meal"><li>買い物代行 +1,100円</li><li>離乳食対応 無料（基本時間内）</li><li>下味冷凍OK</li></ul></article>
+              <article><h3>定期利用でお得に</h3><p>月2回以上のご利用で、定期割引を適用します。<br>忙しい日の味方に、いつでもお得にご利用いただけます。</p></article>
             </div>
 
             <div class="pricing-flow">
@@ -220,10 +192,7 @@
     <section>
       <div class="section-inner">
         <a class="cta line-cta-banner with-image" href="https://line.me/R/ti/p/@788kxjco" target="_blank" rel="noopener noreferrer" aria-label="LINEで料金の目安を相談する" style="--cta-image: url('assets/user-photos/cooking-spread.jpg')">
-          <div>
-            <h2>料金の目安をLINEで相談。</h2>
-            <p>利用したい内容、日時、エリアを送っていただければ目安をご案内します。</p>
-          </div>
+          <div><h2>料金の目安をLINEで相談。</h2><p>利用したい内容、日時、エリアを送っていただければ目安をご案内します。</p></div>
         </a>
       </div>
     </section>
@@ -232,13 +201,7 @@
     <div class="footer-inner">
       <a class="logo footer-logo" href="./index.html"><img src="assets/logo-nicotto.png" alt="nicottoロゴ"><span class="logo-text">nicotto<small>福岡のベビーシッター＋料理代行</small></span></a>
       <p class="footer-note">福岡市周辺を中心に、ベビーシッター・送迎・料理代行のご相談を承っています。</p>
-      <div class="footer-links">
-        <a href="./index.html">トップページ</a><a href="./babysitter.html">ベビーシッター</a>
-        <a href="./cooking.html">料理代行</a>
-        <a href="./pricing.html">ご利用料金</a>
-        <a href="./contact.html">お問い合わせ</a>
-
-      </div>
+      <div class="footer-links"><a href="./index.html">トップページ</a><a href="./babysitter.html">ベビーシッター</a><a href="./cooking.html">料理代行</a><a href="./pricing.html">ご利用料金</a><a href="./contact.html">お問い合わせ</a></div>
       <small>© nicotto</small>
     </div>
   </footer>
