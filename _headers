@@ -1,2 +1,9 @@
 /*
   Link: </assets/header-motion.css?v=1>; rel=stylesheet
+  Cache-Control: no-cache, must-revalidate
+
+/assets/*.js
+  Cache-Control: no-cache, must-revalidate
+
+/*.html
+  Cache-Control: no-cache, must-revalidate
