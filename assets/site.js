@@ -1,3 +1,16 @@
+const googleTagManagerId = "GTM-NZPC4MJB";
+(function(w, d, s, l, i) {
+  if (d.querySelector(`script[src*="googletagmanager.com/gtm.js?id=${i}"]`)) return;
+  w[l] = w[l] || [];
+  w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+  const firstScript = d.getElementsByTagName(s)[0];
+  const tag = d.createElement(s);
+  const dataLayerParam = l !== "dataLayer" ? `&l=${l}` : "";
+  tag.async = true;
+  tag.src = `https://www.googletagmanager.com/gtm.js?id=${i}${dataLayerParam}`;
+  firstScript.parentNode.insertBefore(tag, firstScript);
+})(window, document, "script", "dataLayer", googleTagManagerId);
+
 const canonicalBaseUrl = "https://nicotto-fukuoka.com";
 const normalizedPath = window.location.pathname.endsWith("/index.html") ? "/" : window.location.pathname;
 const canonicalUrl = `${canonicalBaseUrl}${normalizedPath}`;
