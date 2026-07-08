@@ -84,11 +84,11 @@ GitHub Pagesの設定:
 
 ## 主なファイル
 
-- `index.html`
-- `baby-sitter/index.html`
-- `meal-prep/index.html`
-- `pricing/index.html`
-- `contact/index.html`
+- `./`
+- `baby-sitter/./`
+- `meal-prep/./`
+- `pricing/./`
+- `contact/./`
 - `assets/styles.css`
 - `assets/site.js`
 - `assets/unique/`
