@@ -12,12 +12,17 @@ const googleTagManagerId = "GTM-NZPC4MJB";
 })(window, document, "script", "dataLayer", googleTagManagerId);
 
 const canonicalBaseUrl = "https://nicotto-fukuoka.com";
-const normalizedPath = window.location.pathname.endsWith("/index.html") ? "/" : window.location.pathname;
-const canonicalUrl = `${canonicalBaseUrl}${normalizedPath}`;
+const toCleanPath = (path) => {
+  let cleanPath = path.replace(/\/index\.html$/, "/").replace(/\.html$/, "");
+  if (cleanPath.length > 1 && cleanPath.endsWith("/")) cleanPath = cleanPath.slice(0, -1);
+  return cleanPath || "/";
+};
+const normalizedPath = toCleanPath(window.location.pathname);
+const canonicalUrl = normalizedPath === "/" ? `${canonicalBaseUrl}/` : `${canonicalBaseUrl}${normalizedPath}`;
 const isDayoriPaused = false;
 
 if (isDayoriPaused && normalizedPath.startsWith("/dayori/")) {
-  window.location.replace("../nicotto-dayori.html");
+  window.location.replace("/nicotto-dayori");
 }
 
 const canonicalLink = document.querySelector('link[rel="canonical"]') || document.createElement("link");
@@ -30,8 +35,14 @@ document.querySelectorAll('meta[property="og:image"]').forEach((meta) => {
   const imagePath = meta.getAttribute("content")?.replace(/^https?:\/\/[^/]+(?:\/nicotto)?\//, "") || "assets/nicotto-hero.png";
   meta.setAttribute("content", `${canonicalBaseUrl}/${imagePath}`);
 });
+const cleanInternalUrls = (value) => value
+  .replaceAll("https://nnnnn-00.github.io/nicotto", canonicalBaseUrl)
+  .replace(/https:\/\/nicotto-fukuoka\.com\/(babysitter|cooking|pricing|contact|nicotto-dayori)\.html/g, `${canonicalBaseUrl}/$1`)
+  .replace(/https:\/\/nicotto-fukuoka\.com\/(babysitter|cooking|pricing|contact|nicotto-dayori)\//g, `${canonicalBaseUrl}/$1`)
+  .replace(/https:\/\/nicotto-fukuoka\.com\/dayori\/([^"?#/]+)\.html/g, `${canonicalBaseUrl}/dayori/$1`)
+  .replace(/https:\/\/nicotto-fukuoka\.com\/dayori\/([^"?#/]+)\//g, `${canonicalBaseUrl}/dayori/$1`);
 document.querySelectorAll('script[type="application/ld+json"]').forEach((script) => {
-  script.textContent = script.textContent.replaceAll("https://nnnnn-00.github.io/nicotto", canonicalBaseUrl);
+  script.textContent = cleanInternalUrls(script.textContent);
 });
 
 const seoMetaMap = {
@@ -39,21 +50,25 @@ const seoMetaMap = {
     title: "福岡のベビーシッター・料理代行 | 送迎・作り置き nicotto",
     description: "福岡市を中心に福岡県内で相談できるベビーシッター・料理代行。送迎、見守り、病児保育相談、作り置き、離乳食・幼児食づくりまで子育て家庭をサポートします。",
   },
-  "/babysitter.html": {
+  "/babysitter": {
     title: "福岡のベビーシッター | 送迎・病児保育・単発定期利用 nicotto",
     description: "福岡市を中心に、通常保育・送迎・食事補助・病児保育相談まで対応するベビーシッター。単発利用も定期利用もご家庭に合わせて相談できます。",
   },
-  "/cooking.html": {
+  "/cooking": {
     title: "福岡の料理代行・作り置き | 離乳食・幼児食も相談 nicotto",
     description: "福岡市を中心に料理代行・作り置き・下味冷凍をサポート。離乳食、幼児食、アレルギー対応相談まで、子育て家庭の食事づくりを支えます。",
   },
-  "/pricing.html": {
+  "/pricing": {
     title: "料金 | 福岡のベビーシッター・料理代行 料金表 nicotto",
     description: "福岡市周辺のベビーシッター・料理代行料金表。単発・定期・送迎・病児保育相談、料理代行の初回お試しや作り置き基本プランを確認できます。",
   },
-  "/contact.html": {
+  "/contact": {
     title: "お問い合わせ | 福岡のベビーシッター・料理代行相談 nicotto",
     description: "福岡市周辺でベビーシッター・送迎・料理代行を相談したい方へ。LINEまたはフォームから、希望日時・エリア・お子さまの年齢を送れます。",
+  },
+  "/nicotto-dayori": {
+    title: "nicottoだより | 福岡のベビーシッター・料理代行コラム",
+    description: "福岡市周辺の子育て家庭に向けて、ベビーシッター・送迎・料理代行・作り置き・離乳食や幼児食のヒントをお届けします。",
   },
 };
 
@@ -134,18 +149,18 @@ injectJsonLd("enhanced-local-business-schema", {
 });
 
 const pageSchemaMap = {
-  "/babysitter.html": {
+  "/babysitter": {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": `${canonicalBaseUrl}/babysitter.html#enhanced-service`,
+    "@id": `${canonicalBaseUrl}/babysitter#enhanced-service`,
     name: "福岡のベビーシッター・送迎サポート",
     alternateName: ["福岡 ベビーシッター", "福岡市 ベビーシッター", "福岡 送迎サポート"],
     serviceType: "ベビーシッター",
     category: ["ベビーシッター", "送迎サポート", "病児保育相談", "単発利用", "定期利用"],
-    description: seoMetaMap["/babysitter.html"].description,
+    description: seoMetaMap["/babysitter"].description,
     provider: baseProvider,
     areaServed: serviceArea,
-    url: `${canonicalBaseUrl}/babysitter.html`,
+    url: `${canonicalBaseUrl}/babysitter`,
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "ベビーシッター料金・対応内容",
@@ -156,18 +171,18 @@ const pageSchemaMap = {
       ],
     },
   },
-  "/cooking.html": {
+  "/cooking": {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": `${canonicalBaseUrl}/cooking.html#enhanced-service`,
+    "@id": `${canonicalBaseUrl}/cooking#enhanced-service`,
     name: "福岡の料理代行・作り置き",
     alternateName: ["福岡 料理代行", "福岡市 料理代行", "福岡 作り置き代行"],
     serviceType: "料理代行",
     category: ["料理代行", "作り置き", "下味冷凍", "離乳食づくり", "幼児食づくり", "買い物代行相談"],
-    description: seoMetaMap["/cooking.html"].description,
+    description: seoMetaMap["/cooking"].description,
     provider: baseProvider,
     areaServed: serviceArea,
-    url: `${canonicalBaseUrl}/cooking.html`,
+    url: `${canonicalBaseUrl}/cooking`,
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "料理代行料金・対応内容",
@@ -178,13 +193,13 @@ const pageSchemaMap = {
       ],
     },
   },
-  "/pricing.html": {
+  "/pricing": {
     "@context": "https://schema.org",
     "@type": "OfferCatalog",
-    "@id": `${canonicalBaseUrl}/pricing.html#pricing-offers`,
+    "@id": `${canonicalBaseUrl}/pricing#pricing-offers`,
     name: "福岡のベビーシッター・料理代行料金表",
-    description: seoMetaMap["/pricing.html"].description,
-    url: `${canonicalBaseUrl}/pricing.html`,
+    description: seoMetaMap["/pricing"].description,
+    url: `${canonicalBaseUrl}/pricing`,
     provider: baseProvider,
     itemListElement: [
       { "@type": "Offer", name: "ベビーシッター 単発依頼", price: "2200", priceCurrency: "JPY", unitText: "1時間" },
@@ -203,7 +218,7 @@ const trackEvent = (eventName, parameters = {}) => {
   window.gtag("event", eventName, { page_path: window.location.pathname, page_title: document.title, ...parameters });
 };
 
-if (normalizedPath.endsWith("/pricing.html")) {
+if (normalizedPath === "/pricing") {
   const pricingFaqs = [
     ["福岡でベビーシッターを1時間だけ頼めますか？", "はい。単発依頼は1時間単位でご相談いただけます。希望日時、サポート内容、お子さまの年齢を確認したうえで対応可否をご案内します。"],
     ["福岡市で送迎のみのベビーシッター料金はいくらですか？", "送迎のみは1回1,500円です。保育園、幼稚園、習い事、ご自宅間の経路や引き渡し方法を事前に確認します。"],
@@ -228,7 +243,7 @@ if (normalizedPath.endsWith("/pricing.html")) {
   });
 }
 
-if (normalizedPath.endsWith("/nicotto-dayori.html")) {
+if (normalizedPath === "/nicotto-dayori") {
   document.querySelectorAll("section").forEach((section) => {
     if (section.textContent.includes("カテゴリから探す")) section.remove();
   });
@@ -257,14 +272,14 @@ main > section:not(.hero):not(.page-hero) {
 `;
 document.head.appendChild(performanceStyle);
 
-const isNestedPage = window.location.pathname.includes("/dayori/");
-const dayoriPath = isNestedPage ? "../nicotto-dayori.html" : "./nicotto-dayori.html";
-const isDayoriPage = window.location.pathname.includes("/nicotto-dayori.html") || window.location.pathname.includes("/dayori/");
+const isNestedPage = normalizedPath.startsWith("/dayori/");
+const dayoriPath = "/nicotto-dayori";
+const isDayoriPage = normalizedPath === "/nicotto-dayori" || normalizedPath.startsWith("/dayori/");
 
 if (!isDayoriPaused) {
   document.querySelectorAll(".nav").forEach((navElement) => {
-    if (navElement.querySelector('a[href$="nicotto-dayori.html"]')) return;
-    const contactLink = navElement.querySelector('a[href$="contact.html"]');
+    if (navElement.querySelector('a[href$="nicotto-dayori"], a[href$="nicotto-dayori/"], a[href$="nicotto-dayori.html"]')) return;
+    const contactLink = navElement.querySelector('a[href$="contact"], a[href$="contact/"], a[href$="contact.html"]');
     if (!contactLink) return;
     const dayoriLink = document.createElement("a");
     dayoriLink.href = dayoriPath;
@@ -274,8 +289,8 @@ if (!isDayoriPaused) {
   });
 
   document.querySelectorAll(".footer-links").forEach((footerLinks) => {
-    if (footerLinks.querySelector('a[href$="nicotto-dayori.html"]')) return;
-    const contactLink = footerLinks.querySelector('a[href$="contact.html"]');
+    if (footerLinks.querySelector('a[href$="nicotto-dayori"], a[href$="nicotto-dayori/"], a[href$="nicotto-dayori.html"]')) return;
+    const contactLink = footerLinks.querySelector('a[href$="contact"], a[href$="contact/"], a[href$="contact.html"]');
     const dayoriLink = document.createElement("a");
     dayoriLink.href = dayoriPath;
     dayoriLink.textContent = "nicottoだより";
@@ -283,8 +298,8 @@ if (!isDayoriPaused) {
     else footerLinks.appendChild(dayoriLink);
   });
 } else {
-  document.querySelectorAll('a[href$="nicotto-dayori.html"], a[href*="/dayori/"]').forEach((link) => {
-    if (!normalizedPath.endsWith("/nicotto-dayori.html")) link.remove();
+  document.querySelectorAll('a[href*="nicotto-dayori"], a[href*="/dayori/"]').forEach((link) => {
+    if (normalizedPath !== "/nicotto-dayori") link.remove();
   });
 }
 
@@ -347,12 +362,12 @@ document.querySelectorAll('a[href*="line.me"], a[href*="lin.ee"]').forEach((link
   link.addEventListener("click", () => trackEvent("line_click", { event_category: "contact", event_label: link.getAttribute("aria-label") || link.textContent.trim() || "LINE", link_url: link.href }));
 });
 
-document.querySelectorAll('a[href$="pricing.html"], a[href*="pricing.html"]').forEach((link) => {
+document.querySelectorAll('a[href*="pricing"]').forEach((link) => {
   link.addEventListener("click", () => trackEvent("pricing_click", { event_category: "navigation", event_label: link.textContent.trim() || link.getAttribute("aria-label") || "ご利用料金", link_url: link.href }));
 });
 
 if (!isDayoriPaused) {
-  document.querySelectorAll('a[href$="nicotto-dayori.html"], a[href*="/dayori/"]').forEach((link) => {
+  document.querySelectorAll('a[href*="nicotto-dayori"], a[href*="/dayori/"]').forEach((link) => {
     link.addEventListener("click", () => trackEvent("dayori_click", { event_category: "navigation", event_label: link.textContent.trim() || link.getAttribute("aria-label") || "nicottoだより", link_url: link.href }));
   });
 }
