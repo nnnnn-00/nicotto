@@ -17,9 +17,11 @@
 # Legacy aliases
 /baby-sitter /babysitter 301
 /baby-sitter/ /babysitter 301
+/baby-sitter.html /babysitter 301
 /baby-sitter/index.html /babysitter 301
 /meal-prep /cooking 301
 /meal-prep/ /cooking 301
+/meal-prep.html /cooking 301
 /meal-prep/index.html /cooking 301
 /pricing/index.html /pricing 301
 /contact/index.html /contact 301
