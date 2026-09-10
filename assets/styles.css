@@ -756,6 +756,19 @@ h3 {
 .meal .list li::before,
 .list.meal li::before { background: var(--yellow); }
 
+.dayori-links {
+  margin: 14px 0 0;
+  font-size: .92rem;
+  color: var(--muted);
+}
+.dayori-links a {
+  color: var(--pink);
+  text-decoration: underline;
+}
+.service-panel.meal .dayori-links a {
+  color: var(--yellow-dark, var(--yellow));
+}
+
 .page-hero {
   background:
     linear-gradient(135deg, var(--ivory), var(--blue-soft));
