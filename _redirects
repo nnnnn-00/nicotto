@@ -27,6 +27,14 @@
 /contact/index.html /contact 301
 /thanks/index.html /thanks 301
 
+# nicottoだより: consolidated cooking articles (2026-09-10)
+/dayori/obon-after-trip-cooking-service /dayori/fukuoka-back-to-routine-cooking-service 301
+/dayori/school-rhythm-cooking-service /dayori/fukuoka-back-to-routine-cooking-service 301
+/dayori/summer-evening-dinner-cooking-service /dayori/fukuoka-summer-meal-prep-service 301
+/dayori/summer-lunch-cooking-service /dayori/fukuoka-summer-meal-prep-service 301
+/dayori/pantry-reset-cooking-service /dayori/fukuoka-weekly-pantry-cooking-service 301
+/dayori/weekly-menu-cooking-service /dayori/fukuoka-weekly-pantry-cooking-service 301
+
 # nicottoだより: normalize article/category URLs to no trailing slash
 /dayori/:slug/ /dayori/:slug 301
 /dayori/:slug.html /dayori/:slug 301
