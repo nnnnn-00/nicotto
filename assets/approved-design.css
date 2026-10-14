@@ -305,3 +305,9 @@ a{color:inherit;text-decoration:none}
 #nicotto-design .n-site:not(.n-enhanced) [data-contact-panel],#nicotto-design .n-site:not(.n-enhanced) [data-price-panel]{display:block!important}
 
 @container(max-width:350px){#nicotto-design .n-brand img{display:none}}
+
+/* Full-width desktop shell; keep the completed mobile layout. */
+@media (min-width:800px) {
+  #nicotto-design .n-site {max-width:none;width:100%}
+  #nicotto-design .n-dock {width:100%}
+}
