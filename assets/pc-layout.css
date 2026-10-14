@@ -1,0 +1,74 @@
+/* Desktop finishing. The completed mobile design is unchanged below 800px. */
+@container (min-width:800px) {
+  #nicotto-design .n-main:not(.n-legacy-main) .n-hero {
+    padding:32px 48px 36px;
+    gap:40px;
+    grid-template-columns:minmax(0,1.18fr) minmax(0,1fr);
+  }
+  #nicotto-design .n-main:not(.n-legacy-main) .n-hero h1 {line-height:1.45}
+  #nicotto-design .n-main .n-hero-photo {max-width:450px;width:100%;justify-self:end}
+  #nicotto-design .n-main .n-hero-photo img {
+    height:430px;
+    aspect-ratio:auto;
+    object-position:55% 42%;
+  }
+  #nicotto-design .n-main .n-hero-photo figcaption {font-size:15px}
+  #nicotto-design .n-main .n-lead {font-size:16px;line-height:1.85;margin:16px 0 18px!important}
+  #nicotto-design .n-main .n-location {font-size:14px}
+  #nicotto-design .n-main .n-eyebrow {font-size:11px}
+  #nicotto-design .n-main .n-hero-price-note {font-size:14px;margin-bottom:14px!important}
+  #nicotto-design .n-main .n-hero-price-note span {font-size:12px}
+  #nicotto-design .n-main .n-small {font-size:12px}
+  #nicotto-design .n-main .n-button {font-size:16px!important;min-height:54px}
+  #nicotto-design .n-main .n-text-link {font-size:14px!important}
+  #nicotto-design .n-main .n-card-link {font-size:14px!important}
+  #nicotto-design .n-main .n-hero-actions {max-width:460px}
+  #nicotto-design .n-main .n-service-content>p,
+  #nicotto-design .n-main .n-support-grid p,
+  #nicotto-design .n-main .n-steps p,
+  #nicotto-design .n-main .n-preparation>p,
+  #nicotto-design .n-main .n-menu-section>p,
+  #nicotto-design .n-main .n-journal-list p,
+  #nicotto-design .n-main .n-page-intro>p,
+  #nicotto-design .n-main .n-gentle>p {font-size:15px}
+  #nicotto-design .n-main .n-service-photo {height:220px}
+  #nicotto-design .n-main .n-page-intro {padding:36px 48px 28px}
+  #nicotto-design .n-main .n-page-intro>p {max-width:720px}
+  #nicotto-design .n-main .n-channel-tabs {max-width:760px;margin:0 auto 24px}
+  #nicotto-design .n-main .n-channel-tabs button {font-size:15px}
+  #nicotto-design .n-main .n-contact-line {max-width:760px;margin:0 auto 40px;padding:32px}
+  #nicotto-design .n-main .n-contact-line>p {font-size:15px}
+  #nicotto-design .n-main .n-line-checklist p {font-size:14px}
+  #nicotto-design .n-main .n-form-wrap {max-width:760px;margin:0 auto;padding:0 0 40px}
+  #nicotto-design .n-main .n-form {padding:32px}
+  #nicotto-design .n-main .n-form label {font-size:15px;margin-bottom:20px}
+  #nicotto-design .n-main .n-form-note {font-size:14px}
+  #nicotto-design .n-main .n-privacy-note {font-size:13px}
+  #nicotto-design .n-main .n-form input::placeholder,
+  #nicotto-design .n-main .n-form textarea::placeholder {font-size:14px}
+  #nicotto-design .n-main .n-reading {max-width:800px;margin:0 auto;padding:0}
+  #nicotto-design .n-main .n-reading p,
+  #nicotto-design .n-main .n-reading li {font-size:16px}
+  #nicotto-design .n-main .n-night-intro>.n-button {max-width:460px}
+  #nicotto-design .n-main .n-price-faq {max-width:860px;margin:0 auto;padding:28px 30px 36px}
+  #nicotto-design .n-main .n-price-faq details {font-size:15px}
+  #nicotto-design .n-main .n-tabs button {font-size:15px}
+  #nicotto-design .n-main .n-feature-plan p,
+  #nicotto-design .n-main .n-plan-details,
+  #nicotto-design .n-main .n-option-rows p,
+  #nicotto-design .n-main .n-total-example p,
+  #nicotto-design .n-main .n-other-plans p,
+  #nicotto-design .n-main .n-menu-cards p {font-size:14px}
+  #nicotto-design .n-main .n-message-sample p {font-size:15px}
+  #nicotto-design .n-main .n-line-checklist h3 {font-size:15px}
+  #nicotto-design .n-main .n-journal-filters button {font-size:14px}
+  #nicotto-design .n-main .n-assurance {font-size:13px}
+  #nicotto-design .n-dock {
+    grid-template-columns:minmax(0,420px) 140px;
+    justify-content:center;
+    gap:12px;
+    padding:12px 24px max(12px,env(safe-area-inset-bottom));
+  }
+  #nicotto-design .n-dock .n-button {font-size:15px!important;min-height:48px}
+  #nicotto-design .n-dock .n-dock-form {font-size:14px!important}
+}
