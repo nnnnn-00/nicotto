@@ -218,7 +218,7 @@ const trackEvent = (eventName, parameters = {}) => {
   window.gtag("event", eventName, { page_path: window.location.pathname, page_title: document.title, ...parameters });
 };
 
-if (normalizedPath === "/pricing") {
+if (normalizedPath === "/pricing" && !document.querySelector(".n-site")) {
   const pricingFaqs = [
     ["福岡でベビーシッターを1時間だけ頼めますか？", "はい。単発依頼は1時間単位でご相談いただけます。希望日時、サポート内容、お子さまの年齢を確認したうえで対応可否をご案内します。"],
     ["福岡市で送迎のみのベビーシッター料金はいくらですか？", "送迎のみは1回1,500円です。保育園、幼稚園、習い事、ご自宅間の経路や引き渡し方法を事前に確認します。"],
@@ -249,7 +249,7 @@ if (normalizedPath === "/nicotto-dayori") {
   });
 }
 
-const heroImages = document.querySelectorAll(".hero img, .page-hero img");
+const heroImages = document.querySelectorAll(".hero img, .page-hero img, .n-hero img");
 heroImages.forEach((image) => {
   image.decoding = "async";
   image.setAttribute("fetchpriority", "high");
@@ -356,7 +356,7 @@ body:has(.page-hero.visual-hero) .split-media h2 + .lead { margin-top: 0; }
   #panel-sitter .pricing-table td[data-label="補足"] { display: none; }
 }
 `;
-document.head.appendChild(mainStyle);
+if (!document.querySelector(".n-site")) document.head.appendChild(mainStyle);
 
 document.querySelectorAll('a[href*="line.me"], a[href*="lin.ee"]').forEach((link) => {
   link.addEventListener("click", () => trackEvent("line_click", { event_category: "contact", event_label: link.getAttribute("aria-label") || link.textContent.trim() || "LINE", link_url: link.href }));
@@ -422,10 +422,10 @@ document.querySelectorAll("[data-pricing-tabs]").forEach((tabsRoot) => {
 document.querySelectorAll("#contact-form").forEach((form) => {
   const status = form.querySelector("[data-form-status]");
   const submitButton = form.querySelector('button[type="submit"]');
-  const defaultButtonText = submitButton ? submitButton.textContent : "";
+  const defaultButtonText = submitButton ? submitButton.innerHTML : "";
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    if (!submitButton) return;
+    if (!submitButton || submitButton.disabled) return;
     if (status) { status.textContent = ""; status.removeAttribute("data-state"); }
     submitButton.disabled = true;
     submitButton.textContent = "送信中...";
@@ -439,7 +439,7 @@ document.querySelectorAll("#contact-form").forEach((form) => {
       if (status) { status.textContent = "送信できませんでした。時間をおいて再度お試しいただくか、LINEからご相談ください。"; status.dataset.state = "error"; }
     } finally {
       submitButton.disabled = false;
-      submitButton.textContent = defaultButtonText;
+      submitButton.innerHTML = defaultButtonText;
     }
   });
 });

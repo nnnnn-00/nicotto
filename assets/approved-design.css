@@ -1,0 +1,307 @@
+
+@font-face{font-family:"NicottoHui";src:url("/assets/fonts/HuiFont29.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
+#nicotto-design{width:100%;position:relative}
+#nicotto-design .n-site{--n-bg:#fffdfa;--n-paper:#ffffff;--n-ink:#3f3b37;--n-muted:#77695f;--n-rule:#ead8c1;--n-soft:#dff4ec;--n-peach:#ffe8ed;--n-green:#4b3628;--n-green-ink:#4b3628;--n-accent:#4b3628;--n-radius:22px;max-width:736px;margin:0 auto;color-scheme:light;background:linear-gradient(180deg,#fffdfa 0%,#f7fbf8 48%,#fffdfa 100%);color:var(--n-ink);font:400 15px/1.85 'Hiragino Sans','Yu Gothic',Meiryo,system-ui,sans-serif;border:1px solid var(--n-rule);border-radius:18px;position:relative;overflow:clip;box-shadow:0 16px 50px light-dark(#33422c0d,#00000022);container-type:inline-size}
+#nicotto-design .n-site *{box-sizing:border-box}
+#nicotto-design .n-site [hidden]{display:none!important}
+#nicotto-design .n-site p{margin:0 0 14px}
+#nicotto-design .n-site h1,#nicotto-design .n-site h2,#nicotto-design .n-site h3{color:var(--n-ink);font-weight:500;margin:0}
+#nicotto-design .n-site h1{font-family:'NicottoHui','Hiragino Mincho ProN',serif;font-size:33px;line-height:1.6;letter-spacing:.03em;font-weight:400}
+#nicotto-design .n-site h1 em{font-style:normal;background:linear-gradient(transparent 66%,var(--n-soft) 66%);padding-bottom:2px}
+#nicotto-design .n-site h2{font-family:'NicottoHui','Hiragino Mincho ProN',serif;font-size:26px;line-height:1.65;letter-spacing:.02em;font-weight:400}
+#nicotto-design .n-site h3{font-size:18px;line-height:1.6}
+#nicotto-design .n-site button{font:inherit;color:inherit;background:none;border:0;padding:0;text-align:left}
+#nicotto-design .n-site b,#nicotto-design .n-site strong{font-weight:500}
+#nicotto-design .n-site img{display:block;width:100%;height:100%;object-fit:cover}
+#nicotto-design .n-site svg{width:18px;height:18px;flex-shrink:0}
+#nicotto-design .n-header{padding:20px 30px 14px;display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--n-paper)}
+#nicotto-design .n-brand{display:flex;align-items:center;gap:10px!important}
+#nicotto-design .n-brand img{width:46px;height:46px;border-radius:50%}
+#nicotto-design .n-wordmark{font-family:'NicottoHui',serif;font-size:29px;line-height:1.2;letter-spacing:.09em;display:block}
+#nicotto-design .n-dot{color:var(--n-accent)}
+#nicotto-design .n-brand small{font-size:10px;letter-spacing:.045em;display:block;margin-top:3px}
+#nicotto-design .n-header-consult{display:flex;gap:7px;align-items:center;background:var(--n-soft)!important;border-radius:999px;padding:10px 15px!important;font-size:13px!important;color:var(--n-green)!important}
+#nicotto-design .n-nav{display:flex;justify-content:center;gap:24px;padding:9px 20px;background:var(--n-paper);border-bottom:1px solid var(--n-rule)}
+#nicotto-design .n-nav a{padding:5px 0;font-size:12px;white-space:nowrap;border-bottom:2px solid transparent}
+#nicotto-design .n-nav a[aria-current="page"]{border-color:var(--n-green);color:var(--n-green)}
+#nicotto-design .n-eyebrow{display:block;color:var(--n-accent);font-size:10px;letter-spacing:.14em;font-weight:500;margin-bottom:12px}
+#nicotto-design .n-hero{padding:38px 30px;display:grid;grid-template-columns:1.18fr 1fr;gap:22px;align-items:center}
+#nicotto-design .n-location{display:flex;gap:7px;align-items:center;font-size:12px;margin-bottom:14px!important}
+#nicotto-design .n-location span{width:6px;height:6px;border-radius:50%;background:var(--n-green)}
+#nicotto-design .n-lead{font-size:13px;color:var(--n-muted);margin:18px 0 22px!important}
+#nicotto-design .n-hero-photo{margin:0;position:relative;padding-top:5px}
+#nicotto-design .n-hero-photo img{aspect-ratio:4/5;border-radius:44% 46% 24% 22%;object-position:55% center}
+#nicotto-design .n-hero-photo figcaption{text-align:center;font-family:'NicottoHui',serif;font-size:13px;padding-top:14px;color:var(--n-muted)}
+#nicotto-design .n-photo-stamp{display:grid;place-items:center;width:78px;height:78px;text-align:center;border-radius:50%;background:var(--n-paper);border:1px solid var(--n-rule);position:absolute;right:-7px;bottom:40px;font-family:'NicottoHui',serif;line-height:1.6;transform:rotate(8deg);font-size:14px}
+#nicotto-design .n-button{display:flex!important;align-items:center;justify-content:center;gap:9px;min-height:50px;padding:13px 17px!important;border-radius:var(--n-radius);font-size:13px!important;font-weight:500!important;width:100%;text-align:center!important;text-decoration:none;transition:filter .15s}
+#nicotto-design .n-button:hover{filter:brightness(.95)}
+#nicotto-design .n-line{background:linear-gradient(135deg,#ffe8ed,#fff3c9 48%,#dff4ec)!important;color:#4b3628!important;box-shadow:0 8px 18px rgba(75,54,40,.09)}
+#nicotto-design .n-button svg:last-child{margin-left:auto}
+#nicotto-design .n-text-link{display:flex!important;align-items:center;justify-content:center;gap:8px;color:var(--n-green)!important;font-size:12px!important;min-height:42px;padding:8px 0!important;text-decoration:underline;text-underline-offset:5px}
+#nicotto-design .n-hero-price-note{font-size:12px;color:var(--n-ink);margin:0 0 17px!important}#nicotto-design .n-hero-price-note span{font-size:10px;color:var(--n-muted)}
+#nicotto-design .n-small{font-size:11px;color:var(--n-muted);margin:8px 0 0!important}
+#nicotto-design .n-assurance{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;padding:16px 22px;background:var(--n-soft);font-size:11px}
+#nicotto-design .n-assurance span{display:flex;gap:6px;align-items:center}
+#nicotto-design .n-assurance svg{width:15px;height:15px;color:var(--n-green)}
+#nicotto-design .n-section{padding:38px 30px}
+#nicotto-design .n-section-heading{margin-bottom:22px}
+#nicotto-design .n-services{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+#nicotto-design .n-service{background:var(--n-paper);border:1px solid var(--n-rule);border-radius:var(--n-radius);overflow:hidden}
+#nicotto-design .n-service-photo{height:170px;overflow:hidden}
+#nicotto-design .n-service-photo img{object-position:center 45%}
+#nicotto-design .n-service-content{padding:22px 20px 8px}
+#nicotto-design .n-service-tag{display:inline-block;color:var(--n-green);background:var(--n-soft);padding:4px 9px;border-radius:6px;font-size:10px;margin-bottom:9px}
+#nicotto-design .n-peach{background:var(--n-peach);color:var(--n-accent)}
+#nicotto-design .n-service h3{margin-bottom:10px}
+#nicotto-design .n-service p{font-size:12px;color:var(--n-muted)}
+#nicotto-design .n-service-price{font-size:12px;white-space:normal}
+#nicotto-design .n-service-price strong{font-size:27px;letter-spacing:.01em;font-family:'Hiragino Sans','Yu Gothic',Meiryo,sans-serif}
+#nicotto-design .n-card-link{display:flex!important;width:100%;justify-content:space-between;align-items:center;gap:8px;padding:14px 0!important;margin-top:16px;border-top:1px solid var(--n-rule)!important;color:var(--n-green)!important;font-size:12px!important}
+#nicotto-design .n-gentle{text-align:center;margin:0 30px 35px;padding:32px 28px;border-radius:var(--n-radius);background:var(--n-soft)}
+#nicotto-design .n-gentle p{font-size:13px;color:var(--n-muted);margin:16px 0 22px}
+#nicotto-design .n-gentle .n-button{max-width:330px;margin:auto}
+#nicotto-design .n-footer{background:var(--n-paper);border-top:1px solid var(--n-rule);padding:25px 30px 22px;color:var(--n-muted)}
+#nicotto-design .n-footer .n-wordmark{font-size:23px;color:var(--n-ink)}
+#nicotto-design .n-footer p{font-size:11px;margin:8px 0 12px}
+#nicotto-design .n-footer div{display:flex;gap:22px;margin-bottom:8px}
+#nicotto-design .n-footer button,#nicotto-design .n-footer small{font-size:11px}
+#nicotto-design .n-dock{position:sticky;bottom:0;z-index:3;background:var(--n-paper);border-top:1px solid var(--n-rule);padding:10px 20px;display:grid;grid-template-columns:1fr 96px;gap:10px;box-shadow:0 -5px 20px light-dark(#34472d08,#00000018)}
+#nicotto-design .n-dock .n-button{border-radius:12px;min-height:48px}
+#nicotto-design .n-dock-form{display:flex!important;align-items:center;justify-content:center;gap:7px;font-size:12px!important;border:1px solid var(--n-rule)!important;border-radius:12px}
+#nicotto-design .n-hero-price{padding-bottom:26px;grid-template-columns:1.35fr 1fr}
+#nicotto-design .n-price-photo{margin:0;height:230px}
+#nicotto-design .n-price-photo img{border-radius:var(--n-radius);object-position:55% center}
+#nicotto-design .n-quick-plans{margin:0 30px 10px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+#nicotto-design .n-quick-plans article{border-radius:var(--n-radius);padding:24px 22px;background:var(--n-paper);border:1px solid var(--n-rule)}
+#nicotto-design .n-quick-plans article:last-child{background:var(--n-peach)}
+#nicotto-design .n-quick-plans h2{font-size:23px}
+#nicotto-design .n-quick-plans p{font-size:12px;color:var(--n-muted);margin:7px 0}
+#nicotto-design .n-big-price{display:flex;gap:9px;align-items:baseline;margin:10px 0;color:var(--n-ink)}
+#nicotto-design .n-big-price strong{font:400 43px/1.2 'Hiragino Sans','Yu Gothic',Meiryo,sans-serif;letter-spacing:-.03em}
+#nicotto-design .n-big-price span{font-size:13px}
+#nicotto-design .n-quick-plans .n-button{margin-top:16px}
+#nicotto-design .n-story{display:grid;grid-template-columns:1fr 1.2fr;gap:24px;align-items:center}
+#nicotto-design .n-story figure{margin:0;height:260px}
+#nicotto-design .n-story img{border-radius:var(--n-radius)}
+#nicotto-design .n-story p{font-size:13px;color:var(--n-muted);margin-top:14px}
+#nicotto-design .n-page-intro{padding:36px 30px 24px}
+#nicotto-design .n-page-intro p{font-size:13px;color:var(--n-muted);margin:14px 0 0}
+#nicotto-design .n-tabs,#nicotto-design .n-channel-tabs{margin:0 30px 24px;padding:5px;display:grid;grid-template-columns:1fr 1fr;gap:5px;background:var(--n-soft);border-radius:14px}
+#nicotto-design .n-tabs button,#nicotto-design .n-channel-tabs button{padding:12px!important;border-radius:10px;text-align:center;font-size:13px;display:flex;align-items:center;justify-content:center;gap:6px}
+#nicotto-design .n-tabs [aria-selected="true"],#nicotto-design .n-channel-tabs [aria-selected="true"]{background:var(--n-paper)!important;color:var(--n-green)!important;box-shadow:0 2px 8px light-dark(#36452b0a,#0000001a)}
+#nicotto-design .n-price-panel{padding:0 30px}
+#nicotto-design .n-feature-plan{padding:25px 26px;background:var(--n-paper);border:1px solid var(--n-rule);border-radius:var(--n-radius)}
+#nicotto-design .n-feature-plan h2{font-size:25px}
+#nicotto-design .n-feature-plan p{font-size:12px;color:var(--n-muted);margin:8px 0}
+#nicotto-design .n-feature-plan .n-big-price strong{font-size:52px}
+#nicotto-design .n-plan-details{margin:16px 0 20px;border-top:1px solid var(--n-rule);padding-top:12px;font-size:12px}
+#nicotto-design .n-plan-details span{display:flex;justify-content:space-between;gap:10px;padding:4px 0}
+#nicotto-design .n-other-plans{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+#nicotto-design .n-other-plans article{padding:18px;background:var(--n-soft);border-radius:var(--n-radius)}
+#nicotto-design .n-other-plans h3{font-size:16px}
+#nicotto-design .n-other-plans p{font-size:12px;color:var(--n-muted);margin:7px 0 0}
+#nicotto-design .n-total-example{border:1px solid var(--n-rule);border-radius:var(--n-radius);padding:22px;background:var(--n-paper);margin-bottom:22px}
+#nicotto-design .n-total-example h3{font-size:16px}
+#nicotto-design .n-total-example p{font-size:12px;margin-top:10px}
+#nicotto-design .n-example-total{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+#nicotto-design .n-example-total strong{font-size:29px;font-family:'Hiragino Sans','Yu Gothic',Meiryo,sans-serif}
+#nicotto-design .n-example-total span{font-size:12px;color:var(--n-muted)}
+#nicotto-design .n-option-rows{padding:0 4px 10px}
+#nicotto-design .n-option-rows h3{margin-bottom:10px;font-size:16px}
+#nicotto-design .n-option-rows p{display:flex;justify-content:space-between;gap:12px;font-size:12px;padding:10px 0;border-bottom:1px solid var(--n-rule);margin:0}
+#nicotto-design .n-price-faq{padding:20px 30px 32px}
+#nicotto-design .n-price-faq h2{font-size:23px;margin-bottom:14px}
+#nicotto-design .n-price-faq details{border-bottom:1px solid var(--n-rule);font-size:12px}
+#nicotto-design .n-price-faq summary{padding:13px 0}
+#nicotto-design .n-price-faq details p{padding:0 0 10px;color:var(--n-muted)}
+#nicotto-design .n-menu-photo{margin:22px 0}
+#nicotto-design .n-menu-photo img{aspect-ratio:2.2;border-radius:var(--n-radius)}
+#nicotto-design .n-menu-photo figcaption{font-size:11px;color:var(--n-muted);padding-top:8px}
+#nicotto-design .n-contact-line{margin:0 30px 35px;padding:26px;text-align:center;background:var(--n-paper);border:1px solid var(--n-rule);border-radius:var(--n-radius)}
+#nicotto-design .n-line-bubble{width:54px;height:54px;margin:0 auto 14px;display:grid;place-items:center;border-radius:50%;background:var(--n-soft);color:var(--n-green)}
+#nicotto-design .n-line-bubble svg{width:25px;height:25px}
+#nicotto-design .n-contact-line>p{font-size:13px;color:var(--n-muted);margin:15px 0}
+#nicotto-design .n-message-sample{background:var(--n-soft);border-radius:16px 16px 16px 3px;padding:18px;margin:22px auto;text-align:left;max-width:400px}
+#nicotto-design .n-message-sample span{font-size:10px;color:var(--n-muted)}
+#nicotto-design .n-message-sample p{font-size:13px;margin:7px 0 0}
+#nicotto-design .n-contact-line .n-button{max-width:400px;margin:0 auto}
+#nicotto-design .n-line-checklist{text-align:left;margin-top:24px;border-top:1px solid var(--n-rule);padding-top:18px}
+#nicotto-design .n-line-checklist h3{font-size:13px}
+#nicotto-design .n-line-checklist p{font-size:12px;color:var(--n-muted);margin:7px 0 0}
+#nicotto-design .n-form-wrap{padding:0 30px 30px}
+#nicotto-design .n-form{background:var(--n-paper);border:1px solid var(--n-rule);border-radius:var(--n-radius);padding:25px}
+#nicotto-design .n-form-note{font-size:12px;color:var(--n-muted);padding-bottom:16px;border-bottom:1px solid var(--n-rule)}
+#nicotto-design .n-form label{display:block;font-size:13px;font-weight:500;margin-bottom:18px}
+#nicotto-design .n-required,#nicotto-design .n-optional{font-size:10px;font-weight:400;padding:3px 6px;border-radius:4px;margin-left:6px;vertical-align:middle}
+#nicotto-design .n-required{background:var(--n-peach);color:var(--n-accent)}
+#nicotto-design .n-optional{background:var(--n-soft);color:var(--n-muted)}
+#nicotto-design .n-form input,#nicotto-design .n-form select,#nicotto-design .n-form textarea{display:block;width:100%;margin-top:8px;padding:12px;border:1px solid var(--n-rule);border-radius:10px;background:var(--n-bg);color:var(--n-ink);font:400 16px/1.6 'Hiragino Sans','Yu Gothic',Meiryo,system-ui,sans-serif}
+#nicotto-design .n-form input::placeholder,#nicotto-design .n-form textarea::placeholder{color:var(--n-muted);font-size:12px}
+#nicotto-design .n-form textarea{resize:vertical}
+#nicotto-design .n-form-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+#nicotto-design .n-privacy-note{display:flex;align-items:flex-start;gap:10px;font-size:11px;color:var(--n-muted);margin:20px 0}
+#nicotto-design .n-privacy-note svg{color:var(--n-green);margin-top:3px}
+#nicotto-design .n-form-preview{font-size:11px;text-align:center;color:var(--n-muted);margin:10px 0 0!important}
+#nicotto-design .n-submit-status{padding:14px;background:var(--n-soft);border-radius:10px;margin-top:14px!important;font-size:12px}
+#nicotto-design .n-dialog{position:absolute;inset:0;z-index:8;background:light-dark(#27332766,#00000088);padding:180px 24px 24px;display:flex;align-items:flex-start;justify-content:center}
+#nicotto-design .n-dialog-box{position:sticky;top:22px;background:var(--n-paper);border:1px solid var(--n-rule);border-radius:var(--n-radius);max-width:420px;width:100%;padding:32px 26px}
+#nicotto-design .n-dialog-box h2{font-size:26px;margin-bottom:16px}
+#nicotto-design .n-dialog-box p{font-size:13px;color:var(--n-muted)}
+#nicotto-design .n-dialog-close{position:absolute;right:10px;top:10px;display:grid;place-items:center;width:36px;height:36px}
+#nicotto-design .n-dialog-note{background:var(--n-soft);padding:15px;border-radius:12px;font-size:12px;margin:15px 0}
+#nicotto-design .n-outline{border:1px solid var(--n-rule)!important;color:var(--n-green)!important;margin-top:20px}
+@container (max-width:550px){
+ #nicotto-design .n-header{padding:15px 20px 10px}#nicotto-design .n-brand img{width:40px;height:40px}#nicotto-design .n-wordmark{font-size:27px}#nicotto-design .n-brand small{font-size:9px}#nicotto-design .n-header-consult{font-size:12px!important;padding:9px 12px!important}#nicotto-design .n-nav{gap:18px;padding:7px 12px}#nicotto-design .n-nav a{font-size:11px}
+ #nicotto-design .n-hero{padding:29px 22px 24px;display:flex;flex-direction:column;gap:25px;align-items:stretch}#nicotto-design .n-hero-copy{max-width:100%}#nicotto-design .n-site h1{font-size:32px;line-height:1.6}#nicotto-design .n-hero .n-eyebrow{font-size:9px}#nicotto-design .n-location{font-size:11px}#nicotto-design .n-lead{font-size:13px}#nicotto-design .n-hero-photo{align-self:center;width:100%;max-width:330px}#nicotto-design .n-hero-photo img{aspect-ratio:1.3;object-position:center 51%;border-radius:38% 35% 22% 20%}#nicotto-design .n-photo-stamp{width:66px;height:66px;font-size:12px;right:0;bottom:31px}#nicotto-design .n-assurance{justify-content:flex-start;padding:14px 22px;font-size:10px;gap:8px 14px}#nicotto-design .n-assurance span:first-child{width:100%}
+ #nicotto-design .n-section{padding:30px 22px}#nicotto-design .n-section-heading h2{font-size:24px}#nicotto-design .n-services{grid-template-columns:1fr;gap:18px}#nicotto-design .n-service-photo{height:175px}#nicotto-design .n-service-content{padding:20px 20px 8px}#nicotto-design .n-gentle{margin:0 22px 28px;padding:27px 18px}#nicotto-design .n-gentle h2{font-size:24px}#nicotto-design .n-footer{padding:24px 22px}#nicotto-design .n-dock{padding:10px 12px;grid-template-columns:minmax(0,1fr) 85px;gap:8px}#nicotto-design .n-dock .n-button{font-size:12px!important;padding:11px!important;gap:6px}#nicotto-design .n-dock-form{font-size:11px!important;gap:5px}
+ #nicotto-design .n-hero-price{gap:0;padding-bottom:20px}#nicotto-design .n-price-photo{display:none}#nicotto-design .n-hero-price h1{font-size:31px}#nicotto-design .n-hero-price .n-lead{margin-bottom:0!important}#nicotto-design .n-quick-plans{grid-template-columns:1fr;margin:0 22px;gap:14px}#nicotto-design .n-quick-plans article{padding:22px}#nicotto-design .n-quick-plans h2{font-size:22px}#nicotto-design .n-quick-plans .n-big-price{margin:7px 0}#nicotto-design .n-story{grid-template-columns:1fr;gap:22px}#nicotto-design .n-story figure{height:210px}#nicotto-design .n-story-links{display:flex;flex-direction:column}#nicotto-design .n-story h2{font-size:25px}
+ #nicotto-design .n-page-intro{padding:30px 22px 22px}#nicotto-design .n-tabs,#nicotto-design .n-channel-tabs{margin:0 22px 20px}#nicotto-design .n-tabs button,#nicotto-design .n-channel-tabs button{font-size:12px;padding:10px!important}#nicotto-design .n-price-panel{padding:0 22px}#nicotto-design .n-feature-plan{padding:23px 20px}#nicotto-design .n-feature-plan h2{font-size:24px}#nicotto-design .n-feature-plan .n-big-price strong{font-size:49px}#nicotto-design .n-other-plans{grid-template-columns:1fr;gap:12px}#nicotto-design .n-other-plans article{padding:18px 20px}#nicotto-design .n-total-example{padding:20px}#nicotto-design .n-price-faq{padding:20px 22px 28px}#nicotto-design .n-price-faq h2{font-size:22px}#nicotto-design .n-menu-photo img{aspect-ratio:1.5}
+ #nicotto-design .n-contact-line{margin:0 22px 30px;padding:24px 20px}#nicotto-design .n-contact-line h2{font-size:25px}#nicotto-design .n-form-wrap{padding:0 22px 28px}#nicotto-design .n-form{padding:22px 18px}#nicotto-design .n-form-two{grid-template-columns:1fr;gap:0}#nicotto-design .n-dialog{padding:130px 16px 24px}
+}
+@container (max-width:350px){#nicotto-design .n-site h1{font-size:28px}#nicotto-design .n-brand{gap:7px!important}#nicotto-design .n-brand img{width:34px;height:34px}#nicotto-design .n-wordmark{font-size:24px}#nicotto-design .n-header{padding-left:15px;padding-right:15px}#nicotto-design .n-nav{gap:14px}#nicotto-design .n-hero,#nicotto-design .n-page-intro{padding-left:18px;padding-right:18px}#nicotto-design .n-button{font-size:12px!important;padding:12px!important;gap:7px}#nicotto-design .n-dock .n-button{font-size:11px!important}#nicotto-design .n-form-wrap{padding:0 15px 25px}}
+@media(prefers-reduced-motion:reduce){#nicotto-design .n-button{transition:none}}
+
+#nicotto-design .n-site h1,#nicotto-design .n-site h2,#nicotto-design .n-site h3{color:#4b3628}
+#nicotto-design .n-header,#nicotto-design .n-nav,#nicotto-design .n-dock{background:#fffdfa}
+#nicotto-design .n-header-consult{background:#fff7ea!important}
+#nicotto-design .n-nav a[aria-current="page"]{border-color:#6bbfa2;color:#2f6f5d}
+#nicotto-design .n-hero-warm{background:radial-gradient(circle at 5% 6%,rgba(255,210,221,.56),rgba(255,232,237,0) 44%),radial-gradient(circle at 82% 92%,rgba(255,231,156,.46),rgba(255,243,201,0) 42%)}
+#nicotto-design .n-hero-price,#nicotto-design .n-page-intro{background:linear-gradient(135deg,#fff7ea,#eaf4ff)}
+#nicotto-design .n-site h1 em{background:linear-gradient(transparent 66%,#ffe8ed 66%)}
+#nicotto-design .n-hero-price h1 em{background:linear-gradient(transparent 66%,#fff3c9 66%)}
+#nicotto-design .n-assurance,#nicotto-design .n-gentle{background:linear-gradient(180deg,rgba(255,255,255,.74),rgba(255,255,255,.18)),linear-gradient(90deg,#fff7ea,rgba(223,244,236,.72))}
+#nicotto-design .n-service:first-child{background:linear-gradient(180deg,#fff,rgba(255,232,237,.74))}
+#nicotto-design .n-service:last-child{background:linear-gradient(180deg,#fff,rgba(255,243,201,.82))}
+#nicotto-design .n-service-tag{background:#ffe8ed;color:#4b3628}
+#nicotto-design .n-service-tag.n-peach{background:#fff3c9;color:#4b3628}
+#nicotto-design .n-quick-plans article:first-child{background:linear-gradient(180deg,#fff,rgba(255,232,237,.74))}
+#nicotto-design .n-quick-plans article:last-child{background:linear-gradient(180deg,#fff,rgba(255,243,201,.82))}
+#nicotto-design .n-tabs,#nicotto-design .n-channel-tabs{background:linear-gradient(90deg,#ffe8ed,#fff3c9)}
+#nicotto-design .n-other-plans article,#nicotto-design .n-message-sample{background:#fff7ea}
+#nicotto-design .n-footer{background:#604c3e;color:#fff7ea;border-color:#604c3e}
+#nicotto-design .n-footer .n-wordmark{color:#fff7ea}
+#nicotto-design .n-footer p{color:rgba(255,247,234,.86)}
+#nicotto-design .n-dock-form{background:#fff7ea!important;color:#4b3628!important}
+#nicotto-design .n-feature-plan,#nicotto-design .n-form,#nicotto-design .n-contact-line{box-shadow:0 12px 28px rgba(88,58,34,.055)}
+#nicotto-design .n-header-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
+#nicotto-design .n-instagram{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:#fff7ea;color:#4b3628;text-decoration:none;flex-shrink:0}
+#nicotto-design .n-instagram img{width:22px;height:22px;object-fit:contain}
+#nicotto-design .n-footer .n-footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0}
+#nicotto-design .n-footer .n-instagram{background:#fff7ea;color:#4b3628}
+@container (max-width:350px){#nicotto-design .n-header-consult .n-consult-label{display:none}#nicotto-design .n-header-consult{width:44px;height:44px;justify-content:center;padding:0!important}#nicotto-design .n-header-actions{gap:4px}}
+@container (max-width:300px){#nicotto-design .n-site h1{font-size:24px;letter-spacing:0}}
+#nicotto-design .n-nav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;padding:7px 12px}
+#nicotto-design .n-nav a{text-align:center;white-space:normal;min-height:44px;font-size:11px}
+#nicotto-design .n-footer .n-footer-links{flex-wrap:wrap;gap:5px 18px}
+#nicotto-design .n-footer-links a{min-height:36px}
+#nicotto-design .n-support-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+#nicotto-design .n-support-grid article{background:linear-gradient(135deg,#fffdfa,#ffe8ed);padding:22px;border-radius:var(--n-radius)}
+#nicotto-design .n-support-grid article>svg{width:24px;height:24px;color:#4b3628;margin-bottom:14px}
+#nicotto-design .n-support-grid h3{font-family:'NicottoHui',sans-serif;font-size:23px;font-weight:400;margin-bottom:10px}
+#nicotto-design .n-support-grid p{font-size:13px;color:var(--n-muted);margin:0}
+#nicotto-design .n-support-grid .n-text-link{justify-content:flex-start;margin-top:10px}
+#nicotto-design .n-preparation{background:linear-gradient(90deg,#fff7ea,#dff4ec)}
+#nicotto-design .n-preparation>p{font-size:13px;color:var(--n-muted);margin:15px 0 20px}
+#nicotto-design .n-mini-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;font-size:11px}
+#nicotto-design .n-mini-facts span{background:#fffdfa;border-radius:12px;padding:14px;text-align:center}
+#nicotto-design .n-mini-facts strong{display:block;font-size:16px;margin-top:5px;color:#4b3628}
+#nicotto-design .n-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;list-style:none;margin:0;padding:0}
+#nicotto-design .n-steps li{padding:20px;background:#fff7ea;border-radius:var(--n-radius)}
+#nicotto-design .n-steps li>span{font-size:12px;letter-spacing:.09em;color:#77695f}
+#nicotto-design .n-steps h3{font-family:'NicottoHui',sans-serif;font-size:23px;font-weight:400;margin:8px 0 10px}
+#nicotto-design .n-steps p{font-size:13px;color:#77695f;margin:0}
+#nicotto-design .n-three-steps{grid-template-columns:repeat(3,minmax(0,1fr))}
+#nicotto-design .n-cooking-hero{background:radial-gradient(circle at 8% 10%,rgba(255,243,201,.92),transparent 55%),linear-gradient(135deg,#fffdfa,#eaf4ff)}
+#nicotto-design .n-cooking-hero h1 em{background:linear-gradient(transparent 66%,#fff3c9 66%)}
+#nicotto-design .n-meal-support article{background:linear-gradient(135deg,#fffdfa,#fff3c9)}
+#nicotto-design .n-menu-section{background:linear-gradient(180deg,#fffdfa,#fff3c9)}
+#nicotto-design .n-menu-section>p{font-size:13px;color:#77695f;margin:15px 0 22px}
+#nicotto-design .n-menu-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+#nicotto-design .n-menu-cards article{background:#fffdfa;padding:18px;border-radius:var(--n-radius)}
+#nicotto-design .n-menu-cards article>span{font-size:11px;color:#77695f}
+#nicotto-design .n-menu-cards h3{font-family:'NicottoHui',sans-serif;font-size:22px;font-weight:400;margin:8px 0 14px}
+#nicotto-design .n-menu-cards p{font-size:12px;color:#77695f;margin:0;line-height:2.2}
+#nicotto-design .n-journal-filters{display:flex;flex-wrap:wrap;gap:8px;padding:15px 30px 20px}
+#nicotto-design .n-journal-filters button{background:#fff7ea;padding:10px 14px;border-radius:10px;min-height:44px;font-size:12px}
+#nicotto-design .n-journal-filters [aria-pressed="true"]{background:#ffe8ed;color:#4b3628}
+#nicotto-design .n-journal-list{padding:0 30px 30px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+#nicotto-design .n-journal-list article{background:#ffffff;border:1px solid #ead8c1;padding:22px;border-radius:var(--n-radius)}
+#nicotto-design .n-journal-list .n-journal-feature{grid-column:1/-1;background:linear-gradient(135deg,#ffe8ed,#fff7ea 58%,#dff4ec)}
+#nicotto-design .n-journal-list h3{font-family:'NicottoHui',sans-serif;font-size:23px;font-weight:400}
+#nicotto-design .n-journal-list p{font-size:13px;color:#77695f;margin:12px 0 0}
+#nicotto-design .n-breadcrumb{display:flex;flex-wrap:wrap;gap:7px;padding:18px 30px 0;font-size:11px;color:#77695f}
+#nicotto-design .n-breadcrumb a{text-decoration:underline;text-underline-offset:4px;min-height:30px}
+#nicotto-design .n-breadcrumb span{align-self:center}
+#nicotto-design .n-night-intro>p{margin-bottom:18px}
+#nicotto-design .n-night-intro .n-button{margin-top:18px}
+#nicotto-design .n-reading{padding:0 30px}
+#nicotto-design .n-reading>section{padding:28px 0;border-bottom:1px solid #ead8c1}
+#nicotto-design .n-reading h2{font-size:25px;margin-bottom:16px}
+#nicotto-design .n-reading p,#nicotto-design .n-reading li{font-size:14px;color:#77695f;line-height:2}
+#nicotto-design .n-reading ul{margin:18px 0;padding:18px 20px 18px 38px;background:#fff7ea;border-radius:var(--n-radius)}
+#nicotto-design .n-reading .n-reading-price{margin:25px 0 0;padding:24px;background:#fff7ea;border:0;border-radius:var(--n-radius)}
+#nicotto-design .n-reading-price dl{margin:0 0 20px;font-size:13px}
+#nicotto-design .n-reading-price dl>div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #ead8c1}
+#nicotto-design .n-reading-price dd{margin:0;color:#4b3628;font-weight:500}
+@container (max-width:550px){
+ #nicotto-design .n-nav{grid-template-columns:repeat(3,minmax(0,1fr));gap:2px 6px;padding:6px 15px}
+ #nicotto-design .n-support-grid,#nicotto-design .n-steps,#nicotto-design .n-three-steps,#nicotto-design .n-menu-cards,#nicotto-design .n-journal-list{grid-template-columns:1fr}
+ #nicotto-design .n-support-grid article{padding:22px}#nicotto-design .n-support-grid h3{font-size:23px}
+ #nicotto-design .n-mini-facts{grid-template-columns:1fr;gap:8px}#nicotto-design .n-mini-facts span{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;text-align:left}#nicotto-design .n-mini-facts strong{margin:0}
+ #nicotto-design .n-journal-filters{padding:15px 22px 20px}#nicotto-design .n-journal-list{padding:0 22px 28px}
+ #nicotto-design .n-breadcrumb{padding:17px 22px 0}#nicotto-design .n-reading{padding:0 22px}#nicotto-design .n-reading h2{font-size:23px}
+ #nicotto-design .n-service-hero h1{font-size:30px}#nicotto-design .n-night-intro h1{font-size:30px}
+}
+@container (max-width:300px){#nicotto-design .n-service-hero h1,#nicotto-design .n-night-intro h1{font-size:24px}}
+
+#nicotto-design .n-header-wrap{position:relative;z-index:6}
+#nicotto-design .n-menu-toggle{display:grid;place-items:center;width:44px;height:44px;flex-shrink:0;border:1px solid #ead8c1;border-radius:12px;background:#fff7ea;color:#4b3628}
+#nicotto-design .n-menu-toggle svg{width:24px;height:24px}
+#nicotto-design .n-menu-toggle[aria-expanded="true"]{background:#dff4ec}
+#nicotto-design .n-nav{position:absolute;top:100%;left:15px;right:15px;display:grid;grid-template-columns:1fr;gap:4px;padding:12px;background:#fffdfa;border:1px solid #ead8c1;border-radius:18px;box-shadow:0 16px 28px rgba(75,54,40,.12)}
+#nicotto-design .n-nav a{display:flex;align-items:center;justify-content:space-between;text-align:left;min-height:48px;padding:10px 16px;border:0;border-radius:10px;font-size:13px;white-space:normal;color:#4b3628}
+#nicotto-design .n-nav a:hover{background:#fff7ea}
+#nicotto-design .n-nav a[aria-current="page"]{background:#dff4ec;color:#2f6f5d;border:0}
+#nicotto-design .n-nav a[href="/contact"]{background:linear-gradient(135deg,#ffe8ed,#fff3c9 48%,#dff4ec)}
+@container(max-width:550px){
+ #nicotto-design .n-brand small{display:none}
+ #nicotto-design .n-header-consult .n-consult-label{display:none}
+ #nicotto-design .n-header-consult{width:44px;height:44px;justify-content:center;padding:0!important}
+ #nicotto-design .n-nav{grid-template-columns:1fr;gap:4px;padding:12px}
+ #nicotto-design .n-nav a{font-size:13px}
+}
+@container(max-width:300px){#nicotto-design .n-brand img{display:none}#nicotto-design .n-header{gap:6px}}
+
+
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:linear-gradient(180deg,#fffdfa 0%,#f7fbf8 48%,#fffdfa 100%);color:#3f3b37;font-family:'Hiragino Sans','Yu Gothic',Meiryo,system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+#nicotto-design .n-site{max-width:1120px;border:0;border-radius:0;box-shadow:none;overflow:visible;--n-radius:18px;padding-bottom:84px}
+#nicotto-design .n-site figure{margin:0}
+#nicotto-design .n-site a{cursor:pointer}
+#nicotto-design .n-site button{cursor:pointer}
+#nicotto-design .n-site :focus-visible{outline:3px solid #477ea8;outline-offset:3px}
+#nicotto-design .n-header-wrap{position:sticky;top:0;border-bottom:1px solid #ead8c1;background:#fffdfa}
+#nicotto-design .n-nav{left:auto;right:20px;width:min(390px,calc(100% - 30px))}
+#nicotto-design .n-dock{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,1120px);padding-bottom:max(10px,env(safe-area-inset-bottom))}
+#nicotto-design .n-header-actions>a{min-width:44px;min-height:44px}
+#nicotto-design .n-contact-line,#nicotto-design .n-form-wrap{scroll-margin-top:100px}
+#nicotto-design .n-channel-tabs{scroll-margin-top:100px}
+#nicotto-design .n-form-preview{display:none}
+#nicotto-design .n-submit-status:empty{display:none}
+#nicotto-design .n-submit-status[data-state="error"]{background:#ffe8ed}
+#nicotto-design .n-form button:disabled{opacity:.65;cursor:wait}
+#nicotto-design .n-reading a:not(.n-button){text-decoration:underline;text-underline-offset:4px}
+#nicotto-design .n-hero-copy{min-width:0}
+#nicotto-design .n-skip{position:absolute;top:8px;left:12px;transform:translateY(-200%);z-index:10;background:#fffdfa;border:1px solid #ead8c1;padding:10px 16px;border-radius:12px}
+#nicotto-design .n-skip:focus{transform:translateY(0)}
+@container(min-width:800px){#nicotto-design .n-site h1{font-size:42px}#nicotto-design .n-hero{padding:56px 48px;gap:48px}#nicotto-design .n-section{padding:48px}#nicotto-design .n-nav{right:30px}}
+@container(max-width:550px){#nicotto-design .n-nav{right:15px}#nicotto-design .n-site{padding-bottom:80px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+#nicotto-design .n-site .n-menu-toggle{border:1px solid #ead8c1;background:#fff7ea;color:#4b3628;text-align:center}
+#nicotto-design .n-site .n-menu-toggle[aria-expanded="true"]{background:#dff4ec}
+#nicotto-design .n-site:not(.n-enhanced) .n-nav{position:static;width:auto;margin:0 15px 12px}
+#nicotto-design .n-site:not(.n-enhanced) [data-contact-panel],#nicotto-design .n-site:not(.n-enhanced) [data-price-panel]{display:block!important}
+
+@container(max-width:350px){#nicotto-design .n-brand img{display:none}}

@@ -8,3 +8,7 @@ node_modules
 node_modules/**
 *.log
 .DS_Store
+
+# Development checks are not public assets
+tests
+tests/**
